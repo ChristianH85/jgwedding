@@ -1,0 +1,191 @@
+.App {
+  text-align: center;
+  max-width: auto;
+  height: 100vh;
+  /* background: url("./images/blbgfl.jpg"); */
+  background-repeat: no-repeat;
+}
+
+#tcard {
+  height: 100vh;
+  /* position: relative; */
+}
+
+body {
+  background: url("./images/seed.jpg");
+  background-color: #282c34c4;
+  background-repeat: repeat;
+  background-size: cover;
+}
+
+.bg {
+  background: url("./images/paper.jpg");
+  position: absolute;
+  width: 70vw;
+  height: 70vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* justify-content: center; */
+  vertical-align: middle;
+  border-style: hidden;
+}
+
+.row {
+  margin: 0;
+}
+
+#bg {
+
+  /* background: url("./images/blflwr.png"); */
+  width: 27vw;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#bg1 {
+  /* background: url("./images/blflwr.png"); */
+  width: 27vw;
+  transform: rotate(180deg);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+#bg3 {
+  width: 27%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+#bg4 {
+  width: 27%;
+  transform: rotate(180deg);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+body {
+  /* background: url("./images/blflwr.png"); */
+  background-color: #d3dafa;
+  background-position: center center;
+  background-attachment: fixed;
+  /* height: 100%; */
+  /* width: 100%; */
+  /* background-size: cover; */
+  background-repeat: no-repeat;
+  /* background-size: auto; */
+}
+
+.title1 {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: "Italianno", cursive;
+  color: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%);
+  text-align: center;
+  margin: 0;
+}
+
+.title3 {
+  padding-top: 2em;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: "Italianno", cursive;
+  color: rgb(167, 167, 131);
+  text-align: center;
+  margin: 0;
+}
+
+button:focus {
+  background-color: #282c3400;
+}
+
+.btn:hover {
+  background-color: #282c3400;
+}
+
+.menuB {
+  position: absolute;
+  top: 2vh;
+  left: 2vw;
+  padding: 0em;
+  background-color: #3d3d3c4b;
+  border: 0px;
+  border-radius: 33px;
+}
+
+#dropdown3>li:nth-child(1) {
+  padding: 0em;
+}
+
+.menu {
+  background-color: #42424104;
+  color: #ebecee;
+  border: none;
+  border-radius: 15px;
+  width: 2.25em;
+
+  /* margin-left: 2em; */
+}
+
+#dropdown3 li {
+  box-sizing: content-box;
+  width: 100%;
+  height: 2.3em;
+}
+
+#dropdown3 {
+  border-radius: 5px;
+  background-color: #c4c4bd;
+}
+
+.menu2 {
+  color: #88aaec;
+  text-align: right;
+  /* height: 98%; */
+}
+
+.pContent {
+  margin-top: 10vh;
+  height: 90vh;
+  vertical-align: middle;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
