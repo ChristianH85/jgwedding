@@ -1,13 +1,7 @@
-import React, {useCallback} from 'react';
-// import {Stitch, AnonymousCredential,RemoteMongoClient,BSON} from "mongodb-stitch-browser-sdk"
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import React, {useState} from 'react';
+import {Stitch, AnonymousCredential,RemoteMongoClient} from "mongodb-stitch-browser-sdk"
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
-// import glist from './glist.xlsx'
 import Home from './components/Home.js'
 import './App.css';
 import Menu from './components/menu';
@@ -17,62 +11,87 @@ import Venue from './components/Venue.js';
 import Row from 'react-materialize/lib/Row';
 
 function App() {
-  
     // Initialize the App Client
-    // const client = Stitch.initializeDefaultAppClient('jgweddingstitch-stmub');
-    // // Get a MongoDB Service Client
-    // const mongodb = client.getServiceClient(
-    //   RemoteMongoClient.factory,
-    //   "mongodb-atlas"
-    // );
-    // // Get a reference to the blog database
-    // const db = mongodb.db('weddingparty');
-  
-  // ////////////
-// db.collection('guest').insertOne({name: 'christian', tier: 'weddingparty'})
-// client.auth.loginWithCredential(new AnonymousCredential()).then(user =>
-//   db.collection('guest').updateOne({owner_id: client.auth.user.id}, {$set:{number:42}}, {upsert:true})
-// ).then(() =>
-//   db.collection('guest').find({owner_id: client.auth.user.id}, { limit: 100}).asArray()
-// ).then(docs => {
-//     console.log("Found docs", docs)
-//     console.log("[MongoDB Stitch] Connected to Stitch")
-// }).catch(err => {
-//     console.error(err)
-// });
-// db.collection('guest').find().then(data=>{console.log(data)})
-  // const add= ()=>{
-    
-  //   client.auth.loginWithCredential(new AnonymousCredential()).then(data=>{
-  //   db.collection('guest').insertOne({owner_id:client.auth.user.id,name: 'christian', tier: 'weddingparty'}).then((Response)=>{
-  //     console.log(Response)
-  //     // data=>{console.log(data)}
-  //   }).then(()=>{
-  //     db.collection('guest').findOne({name:'christian'}).then(data=>{
+    const client = Stitch.initializeDefaultAppClient('jgweddingstitch-stmub');
+    // Get a MongoDB Service Client
+    const mongodb = client.getServiceClient(
+      RemoteMongoClient.factory,
+      "mongodb-atlas"
+    );
+    // Get a reference to the blog database
+    const db = mongodb.db('weddingparty');
+    // const seed =(data)=>{
+    //     db.collection('guest').insertOne({fullname:data.fullName,firstname: data.firstName, lastName:data.lastName,plus:data.plus }).then((Response)=>{
+    //       console.log(Response)
+    //       // data=>{console.log(data)}
+    //     }).then(()=>{
+    //       db.collection('guest').findOne({firstname:'christian'}).then(data=>{
+    //         console.log(data)
+    //       })
+    //     })
+    // }
+  //   const updateG=(data)=>{
+  //     if(data.attending==true&&data.plus1status==true){
+  //       let gUpObj={
+  //         attending
+  //       } 
+  //     }
+      
+  //     db.collection('guest').findOneAndUpdate({fullname:name},gUpObj).then((data)=>{
   //       console.log(data)
   //     })
-  //   })
+  //   }
+    const populateG=(name)=>{
+      client.auth.loginWithCredential(new AnonymousCredential()).then(data=>{
+      db.collection('guest').findOne({fullname:name}).then((data)=>{
+        console.log(data)
+      //   setGuest(data)
+      //   return data
+      })
+    })
+  }
+// db.collection('guest').find().then(data=>{console.log(data)})
+  // const add= (gData)=>{
+    
+  //   client.auth.loginWithCredential(new AnonymousCredential()).then(data=>{
+  //     console.log(gData.rows)
+  //     gData.rows.map(
+  //         row => {
+  //           if(row.plus){
+  //             let gObj={
+  //               fullName: row.firstName +" "+ row.lastName,
+  //               firstName:row.firstName,
+  //               lastName:row.lastName,
+  //               plus:true
+  //             }
+  //             seed(gObj)
+  //           }
+  //           else{
+  //             let gObj={
+  //               fullName: row.firstName +" "+ row.lastName,
+  //               firstName:row.firstName,
+  //               lastName:row.lastName,
+  //               plus:false
+  //             }
+  //             seed(gObj)
+  //           }
+  //         }
+  //       )
   // }
   //   )
   // }
-  const framestyle = {
-    'max-width':'100vw',
-    'height':'100vh'
-  }
- 
   return (
     
   <Router>
     <Row>
-    <Menu/>
+      <Menu/>
     </Row>
-    
       <Switch>
         <Route exact path='/'>
           <Home />
         </Route>
         <Route path='/Rsvp'>
-          <Rsvp />
+          <Rsvp pop={populateG} />
         </Route>
         <Route path='/Venue'>
           <Venue/> 
@@ -81,14 +100,6 @@ function App() {
           <HotelInfo/>
         </Route>
       </Switch>
-    {/* <div> */}
-      
-      
-      {/* <BackgroundSlider
-      images={[jg1,jg2,jg3,jg7]}
-    duration={5} transition={2} /> */}
-        
-    {/* </div>  */}
 </Router> 
   )
 }

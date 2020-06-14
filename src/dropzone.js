@@ -1,17 +1,9 @@
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
 import readXlsxFile from 'read-excel-file'
-import {Stitch, AnonymousCredential,RemoteMongoClient,BSON} from "mongodb-stitch-browser-sdk"
 
-function MyDropzone() {
-  const client = Stitch.initializeDefaultAppClient('jgweddingstitch-stmub');
-  // Get a MongoDB Service Client
-  const mongodb = client.getServiceClient(
-    RemoteMongoClient.factory,
-    "mongodb-atlas"
-  );
-  // Get a reference to the blog database
-  const db = mongodb.db('weddingparty');
+
+function MyDropzone(props) {
     const schema= {
         'Plus 1':{
             prop:'plus',
@@ -53,7 +45,10 @@ function MyDropzone() {
         console.log(binaryStr)
         readXlsxFile(binaryStr,{schema}).then((rows,error) => {
           
-          console.log(rows,error)})
+          console.log(rows,error)
+          props.add(rows)
+          // console.log(props.add)
+        })
       }
       reader.readAsArrayBuffer(file)
     })

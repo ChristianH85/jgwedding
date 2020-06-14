@@ -1,10 +1,10 @@
 import React from 'react'
 import {Row, Col,Card} from 'react-materialize'
 import blroseb from '../images/blroseb.png'
-import MyDropzone from '../dropzone'
 
-function Home(){
 
+function Home(props){
+  console.log(props.add)
     return(
         <Row >
       <Col s={12} id ='tcard'>
@@ -26,7 +26,7 @@ function Home(){
             <h2 className='title3'>
               4 pm
             </h2>
-            <MyDropzone/>
+
           </Card>
       </Col>    
     </Row>

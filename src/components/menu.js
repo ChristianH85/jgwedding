@@ -1,12 +1,10 @@
 import React from 'react'
 import {Icon,Dropdown, Button} from 'react-materialize'
-import{Link, useRouteMatch} from 'react-router-dom'
+import{Link} from 'react-router-dom'
 
 
 function Menu (){
-  let match = useRouteMatch();
-    return(
-        
+    return(   
         <Dropdown
   options={{
     alignment: 'left',
