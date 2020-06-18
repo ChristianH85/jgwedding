@@ -10,10 +10,11 @@ function Admin(props){
     const [wait,setWait]= useState('')
     const [verify, setVar]= useState('')
     
-    const popLists=(e)=>{
-        setVar(e.target.value)
+    const popLists=()=>{
         props.con()
-        console.log(props.c)  
+    }
+    const checkword=(e)=>{
+        setVar(e.target.value)
     }
     const showLists=()=>{
         if(props.c){
@@ -59,7 +60,7 @@ function Admin(props){
             <Row>
                 {/* {showLists()} */}
                 <Col xs={4}>
-                    {/* <button onClick={popLists}>Load Lists</button> */}
+                    <button onClick={popLists}>Load Lists</button>
                     <button onClick={showLists}>Show List</button>
                 </Col>
                 <Col sm={10} offset='s1'>
@@ -95,11 +96,11 @@ function Admin(props){
 
                 </Col>
             </Row>:
-            <form onSubmit={popLists}>
+            // <form onSubmit={popLists}>
                 <Row>
                     <Col sm={5}>
-                    <TextInput></TextInput>
-                <Button type='submit'>check</Button>
+                    <TextInput onChange={checkword}></TextInput>
+                {/* <Button type='button'>check</Button> */}
                     </Col>
                 </Row>
                 
