@@ -10,7 +10,6 @@ import Row from 'react-materialize/lib/Row';
 import Admin from './components/Admin.js';
 
 function App(props) {
-  // console.log(props.db)
   const [currentG, setG]=useState('')
   const [gInfo, gList]= useState('')
 
@@ -24,17 +23,9 @@ function App(props) {
     console.log('hey')
     props.db.collection('guest').find({}).toArray()
     .then(items => {
-      // console.log(`Successfully found ${items.length} documents.`)
       gList(items)
-      // return items
     })
     .catch(err => console.error(`Failed to find documents: ${err}`))
-    
-    // .find({status:"true"}).then(data=>{
-    //   console.log(data)
-    // })
-      // });
-    // })
   }
   const upStat= (data)=>{
     // console.log(data)
@@ -54,43 +45,6 @@ function App(props) {
       console.log (res)
     })
   }
-//   const glist=()=>{
-//   props.db.collection.find({}).then(data=>{
-//     console.log(data)
-//   })
-// }
-// db.collection('guest').find().then(data=>{console.log(data)})
-  // const add= (gData)=>{
-    
-  //   client.auth.loginWithCredential(new AnonymousCredential()).then(data=>{
-  //     console.log(gData.rows)
-  //     gData.rows.map(
-  //         row => {
-  //           if(row.plus){
-  //             let gObj={
-  //               fullName: row.firstName +" "+ row.lastName,
-  //               firstName:row.firstName,
-  //               lastName:row.lastName,
-  //               plus:true
-  //             }
-  //             seed(gObj)
-  //           }
-  //           else{
-  //             let gObj={
-  //               fullName: row.firstName +" "+ row.lastName,
-  //               firstName:row.firstName,
-  //               lastName:row.lastName,
-  //               plus:false
-  //             }
-  //             seed(gObj)
-  //           }
-  //         }
-  //       )
-  // }
-  //   )
-  // }
-  // glist()
-  // confirmed()
   return (
     
   <Router>

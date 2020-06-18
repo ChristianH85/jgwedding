@@ -4,7 +4,6 @@ import blroseb from '../images/blroseb.png'
 
 
 function Home(props){
-  // console.log(props.add)
     return(
     <Row >
       <Col s={12} id ='tcard'>

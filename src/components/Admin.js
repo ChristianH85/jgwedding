@@ -7,7 +7,7 @@ function Admin(props){
     const [coming,setComing]=useState('')
     const [decline,setDec]= useState('')
     const [wait,setWait]= useState('')
-    console.log(props.con)
+    console.log(process.env.REACT_APP_COMP)
     const popLists=(data)=>{
         props.con()
         console.log(props.c)  

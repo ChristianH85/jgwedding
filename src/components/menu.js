@@ -8,6 +8,7 @@ function Menu (){
   let rsvp='  RSVP'
   let hotel='  Hotel'
   let venue='  Venue'
+  let list=' Admin'
     return(   
         <Dropdown className='menuView'
   options={{
@@ -50,6 +51,11 @@ function Menu (){
      {venue}
     </Link>
     </div>
+    <div>
+    <Link to= '/Admin'>
+     {list}
+    </Link>
+    </div>
     {/* <div>
     <Link to= '/Registry' >
     <Icon small>redeem</Icon>
@@ -59,7 +65,7 @@ function Menu (){
     
 
 </Dropdown>
-        // <Icon medium>menu</Icon>
+        
     )
 }
 export default Menu
