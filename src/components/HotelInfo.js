@@ -1,14 +1,18 @@
 import React from 'react'
-import Card from 'react-materialize/lib/Card'
+import {Row, Col,CardPanel} from 'react-materialize'
 
 function HotelInfo(){
     return(
         <div className='pContent'>
-            <Card>
-                <div className='card-title'>
-                    Coming Soon Hotel
-                </div>
-            </Card>
+            <Row>
+                <Col s={10} m={6} offset='s1 m3'>
+                    <CardPanel  id='panel'>
+                        <div className='card-title'>
+                            Coming Soon Hotel
+                        </div>
+                    </CardPanel>
+                </Col>
+            </Row>
         </div>
     )
 }

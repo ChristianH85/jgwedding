@@ -1,14 +1,14 @@
 import React from 'react'
-import {Row, Col,Card} from 'react-materialize'
+import {Row, Col,CardPanel} from 'react-materialize'
 import blroseb from '../images/blroseb.png'
 
 
 function Home(props){
-  console.log(props.add)
+  // console.log(props.add)
     return(
-        <Row >
+    <Row >
       <Col s={12} id ='tcard'>
-        <Card className='bg'>
+        <CardPanel className='bg'>
         <img src={blroseb} id="bg3" alt=""></img>
         <img src={blroseb} id="bg4" alt=""></img>
             <h1 className='title1'>
@@ -27,7 +27,7 @@ function Home(props){
               4 pm
             </h2>
 
-          </Card>
+          </CardPanel>
       </Col>    
     </Row>
     )

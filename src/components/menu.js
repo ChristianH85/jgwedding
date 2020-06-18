@@ -4,8 +4,12 @@ import{Link} from 'react-router-dom'
 
 
 function Menu (){
+  let home='  Home'
+  let rsvp='  RSVP'
+  let hotel='  Hotel'
+  let venue='  Venue'
     return(   
-        <Dropdown
+        <Dropdown className='menuView'
   options={{
     alignment: 'left',
     autoTrigger: true,
@@ -22,25 +26,36 @@ function Menu (){
     outDuration: 250
   }}
   trigger={<Button className='menuB'><Icon type= 'button' className='menu'small>menu</Icon></Button>}>
-    <Link to={`/`} className='menu2'>
-    <Icon small>home</Icon>Home
-    </Link>
-    <Link to= '/Rsvp'className='menu2'>
+    <div>
+    <Link to={`/`} >
+    <Icon small>home</Icon>
+    {home}
+    </Link>  
+    </div>
+    <div>
+    <Link to= '/Rsvp'>
     <Icon small>message</Icon>
-     RSVP
+     {rsvp}
     </Link>
-    <Link to= '/HotelInfo' className='menu2'>
+    </div>
+    <div>
+    <Link to= '/HotelInfo'>
     <Icon small>hotel</Icon>
-     Hotel
+     {hotel}
     </Link>
-    <Link to= '/Venue'className='menu2'>
+    </div>
+    <div>
+    <Link to= '/Venue'>
     <Icon small>location_on</Icon>
-     Venue
+     {venue}
     </Link>
-    <Link to= '/Registry' className='menu2'>
+    </div>
+    {/* <div>
+    <Link to= '/Registry' >
     <Icon small>redeem</Icon>
      Registry
     </Link>
+    </div> */}
     
 
 </Dropdown>

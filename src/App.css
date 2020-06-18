@@ -6,6 +6,10 @@
   background-repeat: no-repeat;
 }
 
+.radio {
+  text-align: start;
+}
+
 #tcard {
   height: 100vh;
   /* position: relative; */
@@ -118,35 +122,51 @@ button:focus {
 }
 
 #dropdown3>li:nth-child(1) {
-  padding: 0em;
+  padding: .5em;
+}
+
+div>span {
+  font-size: 2em;
+  font-weight: 600;
+  font-family: "Italianno", cursive;
+  text-align: center;
+  color: #5874adef;
+}
+
+.menuView {
+  color: #88aaec;
+  text-align: right;
+  /* height: 60vh; */
 }
 
 .menu {
   background-color: #42424104;
   color: #ebecee;
   border: none;
-  border-radius: 15px;
+  border-radius: 8px;
   width: 2.25em;
 
   /* margin-left: 2em; */
 }
 
 #dropdown3 li {
-  box-sizing: content-box;
-  width: 100%;
-  height: 2.3em;
+  vertical-align: middle;
+  /* box-sizing: border-box; */
+  /* width: 50vw; */
+  /* height: 3em; */
 }
 
 #dropdown3 {
   border-radius: 5px;
   background-color: #c4c4bd;
+
 }
 
-.menu2 {
+/* .menu2 {
   color: #88aaec;
   text-align: right;
-  /* height: 98%; */
-}
+  height: 100%;
+} */
 
 .pContent {
   margin-top: 10vh;
@@ -163,6 +183,19 @@ button:focus {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+#panel {
+  border-radius: 8px;
+  text-align: center;
+}
+
+.auto {
+  width: 80%
+}
+
+.card-image {
+  align-content: center;
 }
 
 .App-header {

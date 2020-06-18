@@ -1,7 +1,5 @@
 import React, {useState} from 'react';
-import {Stitch, AnonymousCredential,RemoteMongoClient} from "mongodb-stitch-browser-sdk"
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
-
 import Home from './components/Home.js'
 import './App.css';
 import Menu from './components/menu';
@@ -9,47 +7,58 @@ import Rsvp from './components/Rsvp';
 import HotelInfo from './components/HotelInfo.js';
 import Venue from './components/Venue.js';
 import Row from 'react-materialize/lib/Row';
+import Admin from './components/Admin.js';
 
-function App() {
-    // Initialize the App Client
-    const client = Stitch.initializeDefaultAppClient('jgweddingstitch-stmub');
-    // Get a MongoDB Service Client
-    const mongodb = client.getServiceClient(
-      RemoteMongoClient.factory,
-      "mongodb-atlas"
-    );
-    // Get a reference to the blog database
-    const db = mongodb.db('weddingparty');
-    // const seed =(data)=>{
-    //     db.collection('guest').insertOne({fullname:data.fullName,firstname: data.firstName, lastName:data.lastName,plus:data.plus }).then((Response)=>{
-    //       console.log(Response)
-    //       // data=>{console.log(data)}
-    //     }).then(()=>{
-    //       db.collection('guest').findOne({firstname:'christian'}).then(data=>{
-    //         console.log(data)
-    //       })
-    //     })
-    // }
-  //   const updateG=(data)=>{
-  //     if(data.attending==true&&data.plus1status==true){
-  //       let gUpObj={
-  //         attending
-  //       } 
-  //     }
-      
-  //     db.collection('guest').findOneAndUpdate({fullname:name},gUpObj).then((data)=>{
-  //       console.log(data)
-  //     })
-  //   }
-    const populateG=(name)=>{
-      client.auth.loginWithCredential(new AnonymousCredential()).then(data=>{
-      db.collection('guest').findOne({fullname:name}).then((data)=>{
-        console.log(data)
-      //   setGuest(data)
-      //   return data
-      })
+function App(props) {
+  // console.log(props.db)
+  const [currentG, setG]=useState('')
+  const [gInfo, gList]= useState('')
+
+  const populateG=(name)=>{
+    props.db.collection('guest').findOne({fullname:name}).then((data)=>{
+      console.log(data)
+      setG(data)
+    })    
+  }
+  const guestL=()=>{
+    console.log('hey')
+    props.db.collection('guest').find({}).toArray()
+    .then(items => {
+      // console.log(`Successfully found ${items.length} documents.`)
+      gList(items)
+      // return items
+    })
+    .catch(err => console.error(`Failed to find documents: ${err}`))
+    
+    // .find({status:"true"}).then(data=>{
+    //   console.log(data)
+    // })
+      // });
+    // })
+  }
+  const upStat= (data)=>{
+    // console.log(data)
+    props.db.collection('guest').findOneAndUpdate(
+      { fullname: data.fullname },
+      { 
+        fullname: currentG.fullname,
+        firstname:currentG.firstname,
+        lastname:currentG.lastName,
+        plus:currentG.plus,
+        status: data.status,
+        p1status: data.plus1,
+        comments:data.comments
+
+      }
+    ).then((res)=>{
+      console.log (res)
     })
   }
+//   const glist=()=>{
+//   props.db.collection.find({}).then(data=>{
+//     console.log(data)
+//   })
+// }
 // db.collection('guest').find().then(data=>{console.log(data)})
   // const add= (gData)=>{
     
@@ -80,6 +89,8 @@ function App() {
   // }
   //   )
   // }
+  // glist()
+  // confirmed()
   return (
     
   <Router>
@@ -91,13 +102,16 @@ function App() {
           <Home />
         </Route>
         <Route path='/Rsvp'>
-          <Rsvp pop={populateG} />
+          <Rsvp G={currentG}update={upStat} pop={populateG} />
         </Route>
         <Route path='/Venue'>
           <Venue/> 
         </Route>
         <Route path='/HotelInfo'>
           <HotelInfo/>
+        </Route>
+        <Route path='/Admin'>
+          <Admin c={gInfo} con={guestL}/>
         </Route>
       </Switch>
 </Router> 

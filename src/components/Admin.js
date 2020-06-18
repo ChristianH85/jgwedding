@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {TextInput,Button, Card}from 'react-materialize'
-import {Stitch, AnonymousCredential,RemoteMongoClient,BSON} from "mongodb-stitch-browser-sdk"
-function Admin(){
-    db.collection('guest').find()
+import {Row,Col} from 'react-materialize'
+import CardPanel from 'react-materialize/lib/CardPanel'
+function Admin(props){
+    const [coming,setComing]=useState([])
+    const [decline,setDec]= useState([])
+    const [wait,setWait]= useState([])
+    console.log(props.con)
     return(
-       <Card>
-           <div>
-               <h1>Guest List</h1>
-           </div>
-       </Card> 
+        <div>
+            <Row>
+                <Col xs={12}>
+                    {/* <button onClick={props.con}>list</button> */}
+                    <h1>Guest List</h1>
+                    <button onClick={props.con}>Confirm List</button>
+                    {props.c.length>0&& props.c.status==='true'?props.c.map((data)=>{
+                        return <CardPanel>{data.fullname}</CardPanel>
+                    })
+                    :<div>{props.c.fullname}</div>}
+                </Col>
+            </Row> 
+        </div>
+       
     )
 }
 export default Admin

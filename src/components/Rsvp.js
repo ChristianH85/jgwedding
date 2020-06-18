@@ -6,13 +6,16 @@ import Textarea from 'react-materialize/lib/Textarea'
 import RadioGroup from 'react-materialize/lib/RadioGroup'
 import Autocomplete from 'react-materialize/lib/Autocomplete'
 import glist from '../glist.js'
+import CardTitle from 'react-materialize/lib/CardTitle'
+import Switch from 'react-materialize/lib/Switch'
 
 function Rsvp(props){
-const[isAttending, setAttend]=useState('true')
+const[isAttending, setAttend]=useState(true)
 const[name, setName]=useState('')
 const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
-
+const[comments, upComm]= useState('')
+// console.log(props.G)
 
 // glist.map((data)=>{
 // let person=data.firstName+' '+data.lastName
@@ -25,6 +28,15 @@ let val=(e)=>{
 let nameInput=(e,val)=>{
     setName(e.target.value)
 }
+let upG=()=>{
+    let guest={
+        fullname:name,
+        status:isAttending,
+        plus1:plusStatus,
+        comments:comments
+    }
+    props.update(guest)
+}
 let Input=(e)=>{
     console.log(e)
     props.pop(e)
@@ -36,55 +48,75 @@ let goBack=()=>{
     setName('')
     selectG(false)
 }
+let comm=(e)=>{
+    upComm(e.target.value)
+}
+let plus1=(e,val)=>{
+    if(e.target.value==='on'){
+        updatePlus('Bringing +1')
+    }
+    else if(e.target.value==='off'){
+        updatePlus('No plus 1')
+    }
+console.log(e.target.value)
+}
     return(
         <div className='pContent'>
-            <CardPanel>
-                {/* <Autocomplete options={{data:glist,onAutocomplete:function(text){Input(text)}
-                     }}  onChange={nameInput} value={name}/> */}
-                    {gSelected===true?
-                <Row className='justify-content-center'>
-                    
-                    <Col s={10}offset='s1'>
-                    <header>{name}</header>
-                    </Col>
-                    <Col s={8} offset='s1'>
-                        <RadioGroup   onChange={val} options={[
-                            {
-                                label:'I Will be Attending',
-                                value:"true"
-                            },
-                            {
-                                label:'I am Unable to Attend',
-                                value:"false" 
-                            }
-                        ]} value= {isAttending}/>
-                    </Col>
-                    <Col s={10} offset='s1'>
-                        <Textarea label='allergies/ comments'/>
-                    </Col>
-                    <Row>
-                    <Col s={4} >
-                        <Button onClick={goBack}>Back</Button>
-                    </Col>
-                    <Col s={4} offset='s2'>
-                        <Button onClick={goBack}>Update</Button>
-                    </Col>
-                    </Row>
-                </Row>:
-                <div>
-                <Autocomplete options={{data:glist,onAutocomplete:function(text){Input(text)}
-                }}  onChange={nameInput} value={name}/>
-                <Row>
-                    
-                     <div>
-                        no guest selected
-                     </div>
+            <Row>
+                <Col s={10} m={6} offset='s1 m3'>
+                    <CardPanel id='panel'>
+                        {gSelected===true?
+                        <Row className='justify-content-center'>
+                            
+                            <Col s={10}offset='s1'>
+                            <div className='card-titl title1'>{props.G.fullname}</div>
+                            </Col>
 
-                </Row>
-                </div>
-                }
-            </CardPanel>
-           
+                            <Col s={10} offset='s1'className='radio'>
+                                <RadioGroup   onChange={val} options={[
+                                    {
+                                        label:'I Will be Attending',
+                                        value:"true"
+                                    },
+                                    {
+                                        label:'I am Unable to Attend',
+                                        value:"false" 
+                                    }
+                                ]} value= {isAttending}/>
+                            </Col>
+                            {props.G.plus===true?
+                            <Col>
+                                <Switch onChange={plus1} offLabel='No +1'onLabel='Bringing +1'></Switch>
+                            </Col>:
+                            <div>
+
+                            </div>
+                            }
+                            <Row>
+                                <Col s={10} offset='s1'>
+                                    <Textarea onChange={comm}value={comments}label='allergies/ comments'/>
+                                </Col>
+                            </Row>
+                            <Row>
+                            <Col s={3} offset='s2'>
+                                <button onClick={goBack}>Back</button>
+                            </Col>
+                            <Col s={3} offset='s1'>
+                                <button onClick={upG}>Update</button>
+                            </Col>
+                            </Row>
+                        </Row>:
+                        <Row>
+                            <Col s={12} offset='s1'>
+                                <Autocomplete className='auto' options={{data:glist,onAutocomplete:function(text){Input(text)}
+                                }}  placeholder='Search List' onChange={nameInput}  value={name}/>
+                            </Col>
+                        </Row>
+                        // </div>
+                        }
+                    </CardPanel>
+                </Col>
+            </Row>   
         </div>
     )
 }
