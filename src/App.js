@@ -43,7 +43,7 @@ function App(props) {
       { 
         fullname: currentG.fullname,
         firstname:currentG.firstname,
-        lastname:currentG.lastName,
+        lastName:currentG.lastName,
         plus:currentG.plus,
         status: data.status,
         p1status: data.plus1,
