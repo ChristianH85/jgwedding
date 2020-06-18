@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {Stitch, AnonymousCredential,RemoteMongoClient} from "mongodb-stitch-browser-sdk"
+import {Stitch,RemoteMongoClient} from "mongodb-stitch-browser-sdk"
 import * as serviceWorker from './serviceWorker';
 
 const client = Stitch.initializeDefaultAppClient('jgweddingstitch-stmub');

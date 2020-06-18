@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
-import {TextInput,Button, Card}from 'react-materialize'
 import {Row,Col} from 'react-materialize'
 import CardPanel from 'react-materialize/lib/CardPanel'
 function Admin(props){
-    const [coming,setComing]=useState([])
-    const [decline,setDec]= useState([])
-    const [wait,setWait]= useState([])
+    // const [coming,setComing]=useState([])
+    // const [decline,setDec]= useState([])
+    // const [wait,setWait]= useState([])
     console.log(props.con)
     return(
         <div>

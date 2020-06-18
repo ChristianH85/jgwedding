@@ -11,7 +11,7 @@ function Venue(){
                         <div className='card-title title1'>
                             The Club at Glennmore
                         </div>
-                        <img src={glen}></img>
+                        <img src={glen} alt=''></img>
                         <div>
                             1750 Piper Way
                         </div>
