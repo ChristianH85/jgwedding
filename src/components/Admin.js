@@ -1,14 +1,17 @@
 import React,{useState} from 'react'
-import {Row,Col} from 'react-materialize'
+import {Row,Col,Button} from 'react-materialize'
 import CardPanel from 'react-materialize/lib/CardPanel'
 import Tabs from 'react-materialize/lib/Tabs'
 import Tab from 'react-materialize/lib/Tab'
+import TextInput from 'react-materialize/lib/TextInput'
 function Admin(props){
     const [coming,setComing]=useState('')
     const [decline,setDec]= useState('')
     const [wait,setWait]= useState('')
-    console.log(process.env.REACT_APP_COMP)
-    const popLists=(data)=>{
+    const [verify, setVar]= useState('')
+    
+    const popLists=(e)=>{
+        setVar(e.target.value)
         props.con()
         console.log(props.c)  
     }
@@ -50,10 +53,13 @@ function Admin(props){
         }
     }
     return(
+
         <div className='pContent'>
+            {verify===process.env.REACT_APP_COMP?
             <Row>
+                {/* {showLists()} */}
                 <Col xs={4}>
-                    <button onClick={popLists}>Load Lists</button>
+                    {/* <button onClick={popLists}>Load Lists</button> */}
                     <button onClick={showLists}>Show List</button>
                 </Col>
                 <Col sm={10} offset='s1'>
@@ -86,13 +92,18 @@ function Admin(props){
                                 }):<div></div>}
                         </Tab>
                     </Tabs>
-{/*                     
-                    {props.c.length>0&& props.c.status==='true'?props.c.map((data)=>{
-                        return <CardPanel>{data.fullname}</CardPanel>
-                    })
-                    :<div>{props.c.fullname}</div>} */}
+
                 </Col>
-            </Row> 
+            </Row>:
+            <form onSubmit={popLists}>
+                <Row>
+                    <Col sm={5}>
+                    <TextInput></TextInput>
+                <Button type='submit'>check</Button>
+                    </Col>
+                </Row>
+                
+            </form>} 
         </div>
        
     )

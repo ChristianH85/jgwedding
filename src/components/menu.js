@@ -53,6 +53,7 @@ function Menu (){
     </div>
     <div>
     <Link to= '/Admin'>
+    <Icon small>done_outline</Icon>
      {list}
     </Link>
     </div>
