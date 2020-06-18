@@ -50,37 +50,36 @@ function Admin(props){
         }
     }
     return(
-        <div>
+        <div className='pContent'>
             <Row>
-                <Col xs={12}>
-                    {/* <button onClick={props.con}>list</button> */}
-                    
+                <Col xs={4}>
                     <button onClick={popLists}>Load Lists</button>
                     <button onClick={showLists}>Show List</button>
+                </Col>
+                <Col sm={10} offset='s1'>
                     <Tabs>
                         <Tab title='Coming'>
                         {coming.length>0?coming.map((data)=>{
                     return(
-                        <CardPanel>
+                        <CardPanel id='attending'>
                             <div>{data.name}</div>
                             <div>{data.comments}</div>
                         </CardPanel>)
-                    
                     }):<div></div>}
                         </Tab>
-                        <Tab title='Undecided'>
+                        <Tab title='Undecided'  >
                             {wait.length>0?wait.map((data)=>{
                                 return(
-                                    <CardPanel>
+                                    <CardPanel id='maybe'>
                                         <div>{data.name}</div>
                                         <div>{data.comments}</div>
                                     </CardPanel>)       
                                 }):<div></div>}
                         </Tab>
-                        <Tab title='Decline'>
+                        <Tab title='Decline'  >
                             {decline.length>0?decline.map((data)=>{
                                 return(
-                                    <CardPanel>
+                                    <CardPanel id='decline'>
                                         <div>{data.name}</div>
                                         <div>{data.comments}</div>
                                     </CardPanel>)       

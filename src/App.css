@@ -145,15 +145,10 @@ div>span {
   border: none;
   border-radius: 8px;
   width: 2.25em;
-
-  /* margin-left: 2em; */
 }
 
 #dropdown3 li {
   vertical-align: middle;
-  /* box-sizing: border-box; */
-  /* width: 50vw; */
-  /* height: 3em; */
 }
 
 #dropdown3 {
@@ -162,11 +157,26 @@ div>span {
 
 }
 
-/* .menu2 {
-  color: #88aaec;
-  text-align: right;
-  height: 100%;
-} */
+#attending {
+  background-color: #44b09e;
+  color: #f8f5f5;
+  border-radius: 8px;
+  padding: .3em;
+}
+
+#decline {
+  background-color: #e0553c;
+  color: #f8f5f5;
+  border-radius: 8px;
+  padding: .3em;
+}
+
+#maybe {
+  background-color: #4d4e4e;
+  color: #f8f5f5;
+  border-radius: 8px;
+  padding: .3em;
+}
 
 .pContent {
   margin-top: 10vh;
