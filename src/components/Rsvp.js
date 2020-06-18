@@ -47,6 +47,9 @@ let Input=(e)=>{
 let goBack=()=>{
     setName('')
     selectG(false)
+    upComm('')
+    updatePlus('')
+    
 }
 let comm=(e)=>{
     upComm(e.target.value)
