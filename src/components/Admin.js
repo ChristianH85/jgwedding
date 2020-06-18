@@ -14,6 +14,7 @@ function Admin(props){
         props.con()
     }
     const checkword=(e)=>{
+        console.log(process.env.REACT_APP_COMP)
         setVar(e.target.value)
     }
     const showLists=()=>{
@@ -99,12 +100,12 @@ function Admin(props){
             // <form onSubmit={popLists}>
                 <Row>
                     <Col sm={5}>
-                    <TextInput onChange={checkword}></TextInput>
+                    <TextInput onChange={checkword} value={verify}></TextInput>
                 {/* <Button type='button'>check</Button> */}
                     </Col>
-                </Row>
+                </Row>}
                 
-            </form>} 
+            {/* // </form>}  */}
         </div>
        
     )
