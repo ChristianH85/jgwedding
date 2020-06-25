@@ -2,11 +2,9 @@ import React, {useState}from 'react'
 import {CardPanel}from 'react-materialize'
 import Row from 'react-materialize/lib/Row'
 import Col from 'react-materialize/lib/Col'
-import Textarea from 'react-materialize/lib/Textarea'
 import RadioGroup from 'react-materialize/lib/RadioGroup'
 import Autocomplete from 'react-materialize/lib/Autocomplete'
 import glist from '../glist.js'
-
 import Switch from 'react-materialize/lib/Switch'
 
 function Rsvp(props){
@@ -49,7 +47,7 @@ let goBack=()=>{
     selectG(false)
     upComm('')
     updatePlus('')
-    
+
 }
 let comm=(e)=>{
     upComm(e.target.value)
@@ -97,7 +95,7 @@ console.log(e.target.value)
                             }
                             <Row>
                                 <Col s={10} offset='s1'>
-                                    <Textarea onChange={comm}value={comments}label='allergies/ comments'/>
+                                    <textarea onChange={comm}value={comments}label='allergies/ comments'/>
                                 </Col>
                             </Row>
                             <Row>

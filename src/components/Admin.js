@@ -3,7 +3,7 @@ import {Row,Col} from 'react-materialize'
 import CardPanel from 'react-materialize/lib/CardPanel'
 import Tabs from 'react-materialize/lib/Tabs'
 import Tab from 'react-materialize/lib/Tab'
-import TextInput from 'react-materialize/lib/TextInput'
+// import TextInput from 'react-materialize/lib/TextInput'
 function Admin(props){
     const [coming,setComing]=useState('')
     const [decline,setDec]= useState('')
@@ -100,7 +100,7 @@ function Admin(props){
             // <form onSubmit={popLists}>
                 <Row>
                     <Col sm={5}>
-                    <TextInput onChange={checkword} value={verify}></TextInput>
+                    <textarea onChange={checkword} value={verify}></textarea>
                 {/* <Button type='button'>check</Button> */}
                     </Col>
                 </Row>}
