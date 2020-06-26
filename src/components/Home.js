@@ -17,7 +17,7 @@ function Home(props){
               & 
             </h1>
             <h1 className='title1'>
-              Genevre Mirenda
+              Genevra Mirenda
             </h1>
             <h2 className='title3'>
               November 14, 2020
