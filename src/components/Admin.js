@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import {Row,Col} from 'react-materialize'
 import CardPanel from 'react-materialize/lib/CardPanel'
 import Tabs from 'react-materialize/lib/Tabs'
@@ -9,22 +9,24 @@ function Admin(props){
     const [decline,setDec]= useState('')
     const [wait,setWait]= useState('')
     const [verify, setVar]= useState('')
-    
+    const[glist, setGlist]= useState(props.c)
+    useEffect(() => {
+        setGlist(props.c);
+      }, [props.c])
     const popLists=()=>{
         props.con()
     }
     const checkword=(e)=>{
-        console.log(process.env.REACT_APP_COMP)
         setVar(e.target.value)
     }
     const showLists=()=>{
-        if(props.c){
+        if(glist){
             let attend = []
             let dec = []
             let maybe= []
-            props.c.map(data=>{
+            glist.map(data=>{
                 if(data.status===undefined){
-                    console.log(data.fullname)
+                    // console.log(data.fullname)
                     let obj={
                         name:data.fullname,
                         comments: data.comments,
@@ -67,29 +69,28 @@ function Admin(props){
                 <Col sm={10} offset='s1'>
                     <Tabs>
                         <Tab title='Coming'>
-                        {coming.length>0?coming.map((data)=>{
+                        {coming.length>0?coming.map((data,i)=>{
                     return(
-                        <CardPanel id='attending'>
-                            <div>{data.name}</div>
-                            <div>{data.comments}</div>
+                        <CardPanel key={i} className='attending'>
+                            <div key={data.name}>{data.name}</div>
+                            <div key={data.comments}>{data.comments}</div>
                         </CardPanel>)
                     }):<div></div>}
                         </Tab>
                         <Tab title='Undecided'  >
-                            {wait.length>0?wait.map((data)=>{
+                            {wait.length>0?wait.map((data,i)=>{
                                 return(
-                                    <CardPanel id='maybe'>
-                                        <div>{data.name}</div>
-                                        <div>{data.comments}</div>
+                                    <CardPanel key={i} className='maybe'>
+                                        <div key={data.name}>{data.name}</div>
                                     </CardPanel>)       
                                 }):<div></div>}
                         </Tab>
                         <Tab title='Decline'  >
-                            {decline.length>0?decline.map((data)=>{
+                            {decline.length>0?decline.map((data, i)=>{
                                 return(
-                                    <CardPanel id='decline'>
-                                        <div>{data.name}</div>
-                                        <div>{data.comments}</div>
+                                    <CardPanel key={i} className='decline'>
+                                        <div key={data.name}>{data.name}</div>
+                                        <div key={data.comments}>{data.comments}</div>
                                     </CardPanel>)       
                                 }):<div></div>}
                         </Tab>

@@ -157,21 +157,21 @@ div>span {
 
 }
 
-#attending {
+.attending {
   background-color: #44b09e;
   color: #f8f5f5;
   border-radius: 8px;
   padding: .3em;
 }
 
-#decline {
+.decline {
   background-color: #e0553c;
   color: #f8f5f5;
   border-radius: 8px;
   padding: .3em;
 }
 
-#maybe {
+.maybe {
   background-color: #4d4e4e;
   color: #f8f5f5;
   border-radius: 8px;

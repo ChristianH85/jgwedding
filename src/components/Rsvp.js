@@ -17,7 +17,7 @@ const[guest, setGuest]=useState(props.G)
 // console.log(props.G)
 useEffect(() => {
     setGuest(props.G);
-  }, [props])
+  }, [props.G])
 // glist.map((data)=>{
 // let person=data.firstName+' '+data.lastName
 //     console.log(person)
