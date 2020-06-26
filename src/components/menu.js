@@ -27,30 +27,30 @@ function Menu (){
     outDuration: 250
   }}
   trigger={<Button className='menuB'><Icon type= 'button' className='menu'small>menu</Icon></Button>}>
-    <div>
+    <button className='btnNav'>
     <Link to={`/`} >
     <Icon small>home</Icon>
     {home}
     </Link>  
-    </div>
-    <div>
+    </button>
+    <button className='btnNav'>
     <Link to= '/Rsvp'>
     <Icon small>message</Icon>
      {rsvp}
     </Link>
-    </div>
-    <div>
+    </button>
+    <button className='btnNav'>
     <Link to= '/HotelInfo'>
     <Icon small>hotel</Icon>
      {hotel}
     </Link>
-    </div>
-    <div>
+    </button>
+    <button className='btnNav'>
     <Link to= '/Venue'>
     <Icon small>location_on</Icon>
      {venue}
     </Link>
-    </div>
+    </button>
     
     {/* <div>
     <Link to= '/Registry' >

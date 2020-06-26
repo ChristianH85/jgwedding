@@ -1,8 +1,12 @@
 import React from 'react'
 import {Row, Col,CardPanel} from 'react-materialize'
 import glen from '../images/glen.jpeg'
+import Button from 'react-materialize/lib/Button'
 
 function Venue(){
+    const openLink=()=>{
+        window.open('https://www.theclubatglenmore.com/','_blank')
+    }
     return(
         <div className= 'pContent'>
             <Row>
@@ -18,9 +22,9 @@ function Venue(){
                         <div>
                             Keswick, VA 22947
                         </div>
-                        <a href='https://www.theclubatglenmore.com/'>
+                        <Button onClick={openLink} >
                             website
-                        </a>
+                        </Button>
                     </CardPanel>
                 </Col>
             </Row>
