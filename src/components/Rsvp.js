@@ -1,4 +1,4 @@
-import React, {useState}from 'react'
+import React, {useState, useEffect}from 'react'
 import {CardPanel}from 'react-materialize'
 import Row from 'react-materialize/lib/Row'
 import Col from 'react-materialize/lib/Col'
@@ -13,8 +13,11 @@ const[name, setName]=useState('')
 const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
 const[comments, upComm]= useState('')
+const[guest, setGuest]=useState(props.G)
 // console.log(props.G)
-
+useEffect(() => {
+    setGuest(props.G);
+  }, [props])
 // glist.map((data)=>{
 // let person=data.firstName+' '+data.lastName
 //     console.log(person)
@@ -70,7 +73,7 @@ console.log(e.target.value)
                         <Row className='justify-content-center'>
                             
                             <Col s={10}offset='s1'>
-                            <div className='card-titl title1'>{props.G.fullname}</div>
+                            <div className='card-titl title1'>{guest.fullname}</div>
                             </Col>
 
                             <Col s={10} offset='s1'className='radio'>
@@ -80,13 +83,13 @@ console.log(e.target.value)
                                         value:"true"
                                     },
                                     {
-                                        label:'I am Unable to Attend',
+                                        label:'  I am Unable to Attend',
                                         value:"false" 
                                     }
                                 ]} value= {isAttending}/>
                             </Col>
-                            {props.G.plus===true?
-                            <Col>
+                            {guest.plus===true?
+                            <Col s={10} offset='s1'>
                                 <Switch onChange={plus1} offLabel='No +1'onLabel='Bringing +1'></Switch>
                             </Col>:
                             <div>
