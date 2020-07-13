@@ -2,6 +2,7 @@ import React from 'react'
 import {Row, Col,CardPanel} from 'react-materialize'
 
 function HotelInfo(){
+    
     return(
         <div className='pContent'>
             <Row>

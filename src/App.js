@@ -8,6 +8,7 @@ import HotelInfo from './components/HotelInfo.js';
 import Venue from './components/Venue.js';
 import Row from 'react-materialize/lib/Row';
 import Admin from './components/Admin.js';
+import Photos from './components/Photo.js';
 
 function App(props) {
   const [currentG, setG]=useState('')
@@ -66,6 +67,9 @@ function App(props) {
         </Route>
         <Route path='/Admin'>
           <Admin c={gInfo} con={guestL}/>
+        </Route>
+        <Route path='/Gallery'>
+          <Photos/>
         </Route>
       </Switch>
 </Router> 

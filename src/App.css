@@ -23,6 +23,9 @@ body {
 }
 
 .bg {
+  padding-top: 15%;
+  padding-bottom: 15%;
+  margin: auto;
   background: url("./images/paper.jpg");
   position: absolute;
   width: 70vw;
@@ -33,6 +36,7 @@ body {
   /* justify-content: center; */
   vertical-align: middle;
   border-style: hidden;
+  border-radius: 8px;
 }
 
 .row {
@@ -40,7 +44,6 @@ body {
 }
 
 #bg {
-
   /* background: url("./images/blflwr.png"); */
   width: 27vw;
   position: absolute;
@@ -95,6 +98,9 @@ body {
 
 .title3 {
   padding-top: 2em;
+}
+
+.title4 {
   font-size: 1.5em;
   font-weight: 600;
   font-family: "Italianno", cursive;
@@ -103,12 +109,17 @@ body {
   margin: 0;
 }
 
-button:focus {
-  background-color: #282c3400;
+.btn {
+  background-color: #88aaec;
+  color: #ebecee;
+}
+
+.btn:focus {
+  background-color: #88aaec;
 }
 
 .btn:hover {
-  background-color: #282c3400;
+  background-color: #88aaec;
 }
 
 .menuB {
@@ -121,21 +132,21 @@ button:focus {
   border-radius: 33px;
 }
 
-#dropdown3>li:nth-child(1) {
+#dropdown3 > li:nth-child(1) {
   /* padding: .5em; */
 }
 
-div>span {
+div > span {
   font-size: 2em;
   font-weight: 600;
   font-family: "Italianno", cursive;
   text-align: center;
-  color: #5874adef;
+  color: #88aaec;
 }
 
 .menuView {
   color: #88aaec;
-  text-align: right;
+  text-align: center;
   /* height: 60vh; */
 }
 
@@ -147,35 +158,40 @@ div>span {
   width: 2.25em;
 }
 
-#dropdown3 li {
+#dropdown-content {
+  position: absolute;
+  top: 10;
+  left: 10;
   /* vertical-align: middle; */
 }
 
 #dropdown3 {
   border-radius: 5px;
   background-color: #c4c4bd;
-
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .attending {
   background-color: #44b09e;
   color: #f8f5f5;
   border-radius: 8px;
-  padding: .3em;
+  padding: 0.3em;
 }
 
 .decline {
   background-color: #e0553c;
   color: #f8f5f5;
   border-radius: 8px;
-  padding: .3em;
+  padding: 0.3em;
 }
 
 .maybe {
   background-color: #4d4e4e;
   color: #f8f5f5;
   border-radius: 8px;
-  padding: .3em;
+  padding: 0.3em;
 }
 
 .pContent {
@@ -189,7 +205,7 @@ div>span {
   height: 100%;
   border-radius: 5px;
   background-color: #c4c4bd;
-  border: none
+  border: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -204,10 +220,21 @@ div>span {
 }
 
 .auto {
-  width: 80%
+  width: 80%;
 }
 
-.card-image {
+.highlight::after {
+  color: #88aaec;
+}
+
+.autocomplete-content {
+  color: #88aaec;
+}
+
+#autocomplete-options-a1498c89-a30d-1c31-22d2-5e0033659e9f
+  > li:nth-child(2)
+  > span
+  .card-image {
   align-content: center;
 }
 
@@ -223,7 +250,7 @@ div>span {
 }
 
 .App-link {
-  color: #61dafb;
+  /* color: #61dafb; */
 }
 
 @keyframes App-logo-spin {

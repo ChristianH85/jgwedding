@@ -8,6 +8,7 @@ function Menu (){
   let rsvp='  RSVP'
   let hotel='  Hotel'
   let venue='  Venue'
+  let gallery='  Gallery'
   // let list=' Admin'
     return(   
         <Dropdown className='menuView'
@@ -49,6 +50,12 @@ function Menu (){
     <Link to= '/Venue'>
     <Icon small>location_on</Icon>
      {venue}
+    </Link>
+    </button>
+    <button className='btnNav'>
+    <Link to= '/Gallery'>
+    <Icon small>collections</Icon>
+     {gallery}
     </Link>
     </button>
     

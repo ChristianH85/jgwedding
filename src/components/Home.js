@@ -19,13 +19,14 @@ function Home(props){
             <h1 className='title1'>
               Genevra Mirenda
             </h1>
-            <h2 className='title3'>
+            <div className='title3'>
+            <h2 className='title4'>
               November 14, 2020
             </h2>
-            <h2 className='title3'>
+            <h2 className='title4'>
               4 pm
             </h2>
-
+            </div>
           </CardPanel>
       </Col>    
     </Row>

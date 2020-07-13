@@ -73,7 +73,7 @@ console.log(e.target.value)
                         <Row className='justify-content-center'>
                             
                             <Col s={10}offset='s1'>
-                            <div className='card-titl title1'>{guest.fullname}</div>
+                            <div className='card-titl title1'><span>{guest.fullname}</span></div>
                             </Col>
 
                             <Col s={10} offset='s1'className='radio'>
@@ -98,15 +98,15 @@ console.log(e.target.value)
                             }
                             <Row>
                                 <Col s={10} offset='s1'>
-                                    <textarea onChange={comm}value={comments}label='allergies/ comments'/>
+                                    <textarea onChange={comm}value={comments}placeholder='Allergies / Comments'/>
                                 </Col>
                             </Row>
                             <Row>
                             <Col s={3} offset='s2'>
-                                <button onClick={goBack}>Back</button>
+                                <button className='btn' onClick={goBack}>Back</button>
                             </Col>
                             <Col s={3} offset='s1'>
-                                <button onClick={upG}>Update</button>
+                                <button className='btn'onClick={upG}>Update</button>
                             </Col>
                             </Row>
                         </Row>:
