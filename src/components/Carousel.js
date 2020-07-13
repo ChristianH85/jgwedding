@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import jg1 from '../images/jg1.jpg'
 import jg2 from '../images/jg2.jpg'
 import jg3 from '../images/jg3.jpg'
