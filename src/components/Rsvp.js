@@ -4,20 +4,31 @@ import Row from 'react-materialize/lib/Row'
 import Col from 'react-materialize/lib/Col'
 import RadioGroup from 'react-materialize/lib/RadioGroup'
 import Autocomplete from 'react-materialize/lib/Autocomplete'
-import glist from '../glist.js'
+// import glist from '../glist.js'
 import Switch from 'react-materialize/lib/Switch'
 
 function Rsvp(props){
 const[isAttending, setAttend]=useState(true)
 const[name, setName]=useState('')
+const [guests, setGuests]=useState(props.names)
 const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
 const[comments, upComm]= useState('')
 const[guest, setGuest]=useState(props.G)
 // console.log(props.G)
 useEffect(() => {
+    
     setGuest(props.G);
+
   }, [props.G])
+  useEffect(() => {
+    setGuests(props.names)
+    //   let nList=[]
+    // props.names.map(data=>{
+    //     console.log(data)
+    //     nList.push()
+    //    })
+  }, [props.names])
 // glist.map((data)=>{
 // let person=data.firstName+' '+data.lastName
 //     console.log(person)
@@ -37,6 +48,8 @@ let upG=()=>{
         comments:comments
     }
     props.update(guest)
+    setName('')
+    selectG(false)
 }
 let Input=(e)=>{
     console.log(e)
@@ -65,6 +78,7 @@ let plus1=(e,val)=>{
 console.log(e.target.value)
 }
     return(
+        
         <div className='pContent'>
             <Row>
                 <Col s={10} m={6} offset='s1 m3'>
@@ -86,7 +100,7 @@ console.log(e.target.value)
                                         label:'  I am Unable to Attend',
                                         value:"false" 
                                     }
-                                ]} value= {isAttending}/>
+                                ]} value= {isAttending.toString()}/>
                             </Col>
                             {guest.plus===true?
                             <Col s={10} offset='s1'>
@@ -112,7 +126,7 @@ console.log(e.target.value)
                         </Row>:
                         <Row>
                             <Col s={12} offset='s1'>
-                                <Autocomplete className='auto' options={{data:glist,onAutocomplete:function(text){Input(text)}
+                                <Autocomplete className='auto' options={{data:guests,onAutocomplete:function(text){Input(text)}
                                 }}  placeholder='Search List' onChange={nameInput}  value={name}/>
                             </Col>
                         </Row>
