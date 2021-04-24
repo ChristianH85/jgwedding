@@ -34,7 +34,7 @@ function App(props) {
        item.fullname===name
     )
     setG(guest[0])
-    
+    setM('')
   }
   const guestL=()=>{
     console.log('hey')
@@ -63,8 +63,8 @@ function App(props) {
     .then((data)=>{
         console.log(data)
         if(data.status===200){
-          setM("Thank You for responding!")
-        }
+          setM("Thank You for Replying!")
+        }else{setM('error updating')}
       })
   }
   return (

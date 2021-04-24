@@ -21,8 +21,8 @@ function Locations(){
                             Fairfield Inn & Suites by Mariott Charlotesville DownTown/University Area
                         </div>
                         <hr/>
-                        <p>(434)295-0100</p>
                         <img src={hotel} alt=''></img>
+                        <div><a className='noDecA' href="tel:4342950100">(434)295-0100</a></div>
                         <div>
                         401 Cherry Avenue
                         </div>

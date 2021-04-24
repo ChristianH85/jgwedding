@@ -8,7 +8,7 @@ import jg5 from '../images/jg5.jpg'
 class Jgcarousel extends Component {
     render() {
         return (
-            <Carousel>
+            <Carousel >
                 <div>
                     <img src={jg1} alt='' />
                 </div>

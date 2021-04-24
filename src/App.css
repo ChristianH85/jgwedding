@@ -277,10 +277,12 @@ div > span {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.noDecA{
+  text-decoration: none;
+}
 .panel {
   background: #ebe0d0;
-  box-shadow: 0 8px 15px 0 rgba(147, 147, 219, 0.37);
+  box-shadow: 0 3px 7px 0 rgba(147, 147, 219, 0.37);
   backdrop-filter: blur( 5.5px );
   -webkit-backdrop-filter: blur( 5.5px );
   border-radius: 10px;

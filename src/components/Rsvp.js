@@ -132,9 +132,12 @@ console.log(e.target.value)
                             </Row>
                         </Row>:
                         <Row>
-                            <Col s={12} offset='s1'>
+                            <Col s={12} >
                                 <Autocomplete className='auto' options={{data:guests,onAutocomplete:function(text){Input(text)}
                                 }}  placeholder='Search List' onChange={nameInput}  value={name}/>
+                            </Col>
+                            <Col s={10} offset='s1'>
+                                <p>{props.M?props.M:''}</p>
                             </Col>
                         </Row>
                         // </div>
