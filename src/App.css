@@ -145,9 +145,10 @@ body {
 
 .title1 {
   font-size: 2em;
-  font-weight: 600;
+  font-weight: 700;
   font-family: "Italianno", cursive;
-  color: #c9b98e;
+  color: #2e2c28;
+  /* font-weight: 600; */
   /* color: linear-gradient(315deg, #44b09e 0%, #e0d2c7 74%); */
   text-align: center;
   margin: 0;
@@ -278,7 +279,7 @@ div > span {
 }
 
 .panel {
-  background: #f8f5f1;
+  background: #ebe0d0;
   box-shadow: 0 8px 15px 0 rgba(147, 147, 219, 0.37);
   backdrop-filter: blur( 5.5px );
   -webkit-backdrop-filter: blur( 5.5px );

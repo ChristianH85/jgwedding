@@ -5,7 +5,7 @@ import './App.css';
 // import Menu from './components/menu';
 import Rsvp from './components/Rsvp';
 import HotelInfo from './components/HotelInfo.js';
-import Venue from './components/Venue.js';
+import Locations from './components/Locations.js';
 import Row from 'react-materialize/lib/Row';
 import Admin from './components/Admin.js';
 import Photos from './components/Photo.js';
@@ -81,7 +81,7 @@ function App(props) {
           <Rsvp M={message} G={currentG}update={upStat} names={names} pop={populateG} />
         </Route>
         <Route path='/Locations'>
-          <Venue/> 
+          <Locations/> 
         </Route>
         <Route path='/HotelInfo'>
           <HotelInfo/>
