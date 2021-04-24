@@ -8,7 +8,7 @@ function Photos (){
         <div className='pContent'>
             <Row>
                 <Col s={10} m={6} offset='s1 m3' >
-                    <CardPanel id='panel'>
+                    <CardPanel className='panel'>
                         <Jgcarousel/>
                     </CardPanel>
                 </Col>

@@ -29,7 +29,7 @@ function Nav (){
                     <Link to={`/Rsvp`} >RSVP</Link>  
                 
                
-                    <Link to={`/Venue`} >Venue</Link>  
+                    <Link to={`/Locations`} >Locations</Link>  
 
                     <Link to={`/Gallery`} >Gallery</Link>  
 

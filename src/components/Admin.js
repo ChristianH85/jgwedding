@@ -81,7 +81,7 @@ function Admin(props){
                 break;
             case  true:
                 console.log('2nd')
-                let l=filterWord.length
+                // let l=filterWord.length
                 let updatedList= await allG.filter(item=>{return item.fullname.includes(filterWord)}) 
                 console.log(updatedList)
                 break;

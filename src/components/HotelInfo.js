@@ -7,7 +7,7 @@ function HotelInfo(){
         <div className='pContent'>
             <Row>
                 <Col s={10} m={6} offset='s1 m3'>
-                    <CardPanel  id='panel'>
+                    <CardPanel  className='panel'>
                         <div className='card-title'>
                             Coming Soon Hotel
                         </div>

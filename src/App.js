@@ -16,6 +16,7 @@ function App(props) {
   const [currentG, setG]=useState('')
   const [names, setNames]=useState('')
   const [gInfo, gList]= useState('')
+  const[message,setM]= useState('')
 
   useEffect(()=>{
     axios.get('https://jgweddingapi.herokuapp.com/api')
@@ -58,7 +59,13 @@ function App(props) {
       comments:data.comments
     }
 
-    axios.post(`https://jgweddingapi.herokuapp.com/api/updateuser/${guest}`,updateObj).then((data)=>{console.log(data)})
+    axios.post(`https://jgweddingapi.herokuapp.com/api/updateuser/${guest}`,updateObj)
+    .then((data)=>{
+        console.log(data)
+        if(data.status===200){
+          setM("Thank You for responding!")
+        }
+      })
   }
   return (
     
@@ -71,9 +78,9 @@ function App(props) {
           <Home />
         </Route>
         <Route path='/Rsvp'>
-          <Rsvp G={currentG}update={upStat} names={names} pop={populateG} />
+          <Rsvp M={message} G={currentG}update={upStat} names={names} pop={populateG} />
         </Route>
-        <Route path='/Venue'>
+        <Route path='/Locations'>
           <Venue/> 
         </Route>
         <Route path='/HotelInfo'>
