@@ -5,6 +5,23 @@
   /* background: url("./images/blbgfl.jpg"); */
   background-repeat: no-repeat;
 }
+#Modal-0{
+  background-color:white;
+  color:red;
+  border-radius:8px;
+}
+.person{
+  background-color:white!important;
+  margin-bottom: 2px;
+  border-top:2px solid #88aaec;
+  justify-content: center;
+}
+.deleteG{
+  /* margin-right:1vw; */
+  margin:auto;
+  background-color:red!important;
+  color:white;
+}
 nav{
   height: 10vh;
   position:fixed;
@@ -181,10 +198,12 @@ div > span {
   font-weight: 600;
   font-family: "Italianno", cursive;
   text-align: center;
-  color: #eceef1;
+  color: #c9b98e;
 }
 [type="radio"]:checked+span:after{
-  color: #fff;
+  background-color: #fff;
+  color:#fff;
+  border-color:#fff;
 }
 .menuView {
   color: #88aaec;
@@ -257,8 +276,8 @@ div > span {
 }
 
 #panel {
-  background: rgba(131, 178, 231, 0.829);
-box-shadow: 0 8px 32px 0 rgba(70, 70, 189, 0.37);
+  background: rgba(218, 233, 248, 0.829);
+box-shadow: 0 8px 15px 0 rgba(147, 147, 219, 0.37);
 backdrop-filter: blur( 5.5px );
 -webkit-backdrop-filter: blur( 5.5px );
 border-radius: 10px;
@@ -285,7 +304,10 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   .card-image {
   align-content: center;
 }
-
+label{
+  color: #585857;
+  font-weight: bold;
+}
 .App-header {
   background-color: #282c34;
   /* min-height: 100vh; */

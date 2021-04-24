@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import {Row,Col,Select} from 'react-materialize'
+import {Row,Col,Select,Button,Modal} from 'react-materialize'
 
 // import TextInput from 'react-materialize/lib/TextInput'
 function Admin(props){
@@ -63,6 +63,30 @@ function Admin(props){
     }
     const checkword=(e)=>{
         setVar(e.target.value)
+    }
+    const deleteGuest=(id)=>{
+        // console.log(id)
+        axios.delete(`https://jgweddingapi.herokuapp.com/api/delete/${id}`).then(data=>console.log(data))
+    }
+    const filterList=async(e)=>{
+        e.preventDefault()
+        console.log(e.target.value);
+        console.log(e.target.value.length);
+        let filterWord=e.target.value
+        let tf=filterWord.length>0?true:false
+        console.log(tf)
+        switch(tf){
+            case false:
+                setDisplay(allG);
+                break;
+            case  true:
+                console.log('2nd')
+                let l=filterWord.length
+                let updatedList= await allG.filter(item=>{return item.fullname.includes(filterWord)}) 
+                console.log(updatedList)
+                break;
+            default:console.log('default')
+        }
     }
     // const showLists=()=>{
     //     if(glist){
@@ -128,11 +152,33 @@ function Admin(props){
                         </div>
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
+                        <input type='text' placeholder='filter guests by last name' onChange={(e)=>{filterList(e)}}></input>
                         {display.length>0?
-                        display.map((data)=>{return(
-                            <div>
-                                <p>{data.fullname}</p>
-                            </div>
+                        display.map((data,i)=>{
+                            return(
+                            <Row key={i} >
+                                <div className='person'>
+                                <Col s={6}><p>{data.fullname}</p></Col>
+                                <Col s={4}><p>{data.status===true?'Attending':data.status=false? "Not Attending":"pending"}</p></Col>
+                                <Col s={2}><Modal
+                                    actions={[
+                                        <Button flat modal="close" node="button" waves="green">Cancel</Button>,
+                                        <Button flat modal="close" className='deleteG'node="button" waves="red" name={data._id} onClick={(e)=>{deleteGuest(e.target.name)}}>Delete</Button>
+                                    ]}
+                                    header={`Delete ${data.fullname} `}
+                                    id="Modal-0"
+                                    open={false}
+                                    options={{ 
+                                        inDuration: 250,
+                                        opacity: 0.5,
+                                        outDuration: 250,
+                                        preventScrolling: true
+                                    }}     
+                                    trigger={<Button className='deleteG'node="button">X</Button>}
+                                    >
+                                    </Modal></Col>
+                                    </div>
+                            </Row>
                         )}):<div></div>}
                     </Col>
                 </Row>

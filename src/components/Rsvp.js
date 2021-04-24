@@ -10,6 +10,7 @@ import Switch from 'react-materialize/lib/Switch'
 function Rsvp(props){
 const[isAttending, setAttend]=useState(true)
 const[name, setName]=useState('')
+const[email, setEmail]=useState('')
 const [guests, setGuests]=useState(props.names)
 const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
@@ -65,6 +66,9 @@ let goBack=()=>{
     updatePlus('')
 
 }
+const chEmail=(e)=>{
+    setEmail(e.target.value)
+}
 let comm=(e)=>{
     upComm(e.target.value)
 }
@@ -84,12 +88,10 @@ console.log(e.target.value)
                 <Col s={10} m={6} offset='s1 m3'>
                     <CardPanel id='panel'>
                         {gSelected===true?
-                        <Row className='justify-content-center'>
-                            
+                        <Row className='justify-content-center'>                           
                             <Col s={10}offset='s1'>
                             <div className='card-titl title1'><span>{guest.fullname}</span></div>
                             </Col>
-
                             <Col s={10} offset='s1'className='radio'>
                                 <RadioGroup   onChange={val} options={[
                                     {
@@ -113,6 +115,11 @@ console.log(e.target.value)
                             <Row>
                                 <Col s={10} offset='s1'>
                                     <textarea onChange={comm}value={comments}placeholder='Allergies / Comments'/>
+                                </Col>
+                            </Row>
+                            <Row>
+                                <Col s={10} offset='s1'>
+                                    <input type='email' onChange={chEmail}value={email}placeholder='email to send invite'/>
                                 </Col>
                             </Row>
                             <Row>
