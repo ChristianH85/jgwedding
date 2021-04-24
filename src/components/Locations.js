@@ -23,12 +23,15 @@ function Locations(){
                         <hr/>
                         <img src={hotel} alt=''></img>
                         <div><a className='noDecA' href="tel:4342950100">(434)295-0100</a></div>
-                        <div>
-                        401 Cherry Avenue
-                        </div>
-                        <div>
-                        Charlottesville, VA 22903
-                        </div>
+                        <a className='noDecA' href='https://goo.gl/maps/sarmFYfCdVn8EaL37'>
+                            <div>
+                            401 Cherry Avenue
+                            </div>
+                            <div>
+                            Charlottesville, VA 22903
+                            </div>
+                        </a>
+                       
                         <hr/>
                         <p>November 12 & 13 is a busy day in the Charlottesville area (UVA football is taking over the town!), so we recommend you act fast on lodging. We have reserved a few room blocks.</p>
                         <Button name='Hotel' onClick={(e)=>openLink(e.target.name)} >
@@ -45,12 +48,14 @@ function Locations(){
                         </div>
                         <hr/>
                         <img src={glen} alt=''></img>
-                        <div>
-                            1750 Piper Way
-                        </div>
-                        <div>
-                            Keswick, VA 22947
-                        </div>
+                        <a className='noDecA' href='https://goo.gl/maps/fWGoBrYfEkVF266p7'>
+                            <div>
+                                1750 Piper Way
+                            </div>
+                            <div>
+                                Keswick, VA 22947
+                            </div>
+                        </a>
                         <hr/>
                         <Button name='Venue' onClick={(e)=>openLink(e.target.name)}>
                             website
