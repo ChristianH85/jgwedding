@@ -117,11 +117,11 @@ console.log(e.target.value)
                                     <textarea onChange={comm}value={comments}placeholder='Allergies / Comments'/>
                                 </Col>
                             </Row>
-                            <Row>
+                            {/* <Row>
                                 <Col s={10} offset='s1'>
                                     <input type='email' onChange={chEmail}value={email}placeholder='email to send invite'/>
                                 </Col>
-                            </Row>
+                            </Row> */}
                             <Row>
                             <Col s={3} offset='s2'>
                                 <button className='btn' onClick={goBack}>Back</button>
