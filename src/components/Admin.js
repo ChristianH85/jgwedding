@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import {Row,Col,Select,Button,Modal} from 'react-materialize'
-
+import AddG from './AddG'
 // import TextInput from 'react-materialize/lib/TextInput'
 function Admin(props){
     const [allG, setAllG]=useState([])
     const [coming,setComing]=useState([])
     const [decline,setDec]= useState([])
     const [display,setDisplay]= useState([])
-    // const [view, setView]=useState('')
+    const [view, setView]=useState('')
     // const [wait,setWait]= useState('')
     const [verify, setVar]= useState('')
     // const[glist, setGlist]= useState(props.c)
@@ -37,20 +37,25 @@ function Admin(props){
         // let option=e.tatget.value
         switch(key){
             case "Add1":
+                setView('Add1')
                 console.log('add one')
                 break;
                 // setDisplay()
             case "ShowA":
+                setView('List')
                 setDisplay(coming)
                 break;
             case "ShowD":
+                setView('List')
                 setDisplay(decline) 
                 break;   
             case "ShowAll":
+                setView('List')
                 console.log(allG)
                 setDisplay(allG)
                 break;
             case "ViewNotes":
+                setView('ViewNotes')
                 console.log('notes')
                 break;
                 // setDisplay()
@@ -153,7 +158,7 @@ function Admin(props){
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
                         <input type='text' placeholder='filter guests by last name' onChange={(e)=>{filterList(e)}}></input>
-                        {display.length>0?
+                        {view==='Add1'? <AddG/>: view==='ViewNotes'? <p>notes</p>:view==='List'&&display.length>0?
                         display.map((data,i)=>{
                             return(
                             <Row key={i} >
