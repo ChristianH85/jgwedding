@@ -10,7 +10,7 @@ import Switch from 'react-materialize/lib/Switch'
 function Rsvp(props){
 const[isAttending, setAttend]=useState(true)
 const[name, setName]=useState('')
-const[email, setEmail]=useState('')
+// const[email, setEmail]=useState('')
 const [guests, setGuests]=useState(props.names)
 const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
@@ -66,9 +66,9 @@ let goBack=()=>{
     updatePlus('')
 
 }
-const chEmail=(e)=>{
-    setEmail(e.target.value)
-}
+// const chEmail=(e)=>{
+//     setEmail(e.target.value)
+// }
 let comm=(e)=>{
     upComm(e.target.value)
 }
