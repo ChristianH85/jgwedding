@@ -11,6 +11,7 @@ import Admin from './components/Admin.js';
 // import Photos from './components/Photo.js';
 import Nav from './components/Nav.js';
 import axios from 'axios'
+import Message from './components/Message.js';
 
 function App(props) {
   const [currentG, setG]=useState('')
@@ -89,9 +90,9 @@ function App(props) {
         <Route path='/Admin'>
           <Admin c={gInfo} con={guestL}/>
         </Route>
-        {/* <Route path='/Gallery'>
-          <Photos/>
-        </Route> */}
+        <Route path='/Message'>
+          <Message/>
+        </Route>
       </Switch>
 </Router> 
   )

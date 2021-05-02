@@ -338,9 +338,22 @@ textarea{
 .noDecA{
   text-decoration: none;
 }
+#gMess{
+  font-size:1.5em;
+  font-weight:600;
+}
 .panel {
   background: #ebe0d0;
   box-shadow: 0 3px 7px 0 rgba(147, 147, 219, 0.37);
+  backdrop-filter: blur( 5.5px );
+  -webkit-backdrop-filter: blur( 5.5px );
+  border-radius: 10px;
+  border: 1px solid rgba(247, 202, 202, 0.18);  
+  text-align: center;
+}
+.notesPanel {
+  background: #f392d66e;
+  box-shadow: 0 3px 7px 0 rgba(241, 155, 208, 0.37);
   backdrop-filter: blur( 5.5px );
   -webkit-backdrop-filter: blur( 5.5px );
   border-radius: 10px;
@@ -355,6 +368,9 @@ textarea{
   border-radius: 10px;
   border: 1px solid rgba( 255, 255, 255, 0.18 );  
   text-align: center;
+}
+.switch label input[type=checkbox]:checked+.lever{
+  background-color:white;
 }
 #filterIn{
   position:sticky;

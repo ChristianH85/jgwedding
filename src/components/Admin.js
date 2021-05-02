@@ -9,6 +9,7 @@ function Admin(props){
     const [decline,setDec]= useState([])
     const [display,setDisplay]= useState([])
     const [view, setView]=useState('')
+    const [notes,setNotes]= useState([])
     // const [wait,setWait]= useState('')
     const [verify, setVar]= useState('')
     // const[glist, setGlist]= useState(props.c)
@@ -27,6 +28,7 @@ function Admin(props){
               setDec(not)
             }) 
         .catch(err=>console.log(err))
+            axios.get('https://jgweddingapi.herokuapp.com/api/messages').then(data=>{setNotes(data)})
         // axios.get('http://localhost:8080/api').then(data=>console.log(data)).catch(err=>console.log(err))
       },[])
     // const popLists=()=>{
@@ -157,8 +159,22 @@ function Admin(props){
                         </div>
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
-                        <input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>
-                        {view==='Add1'? <AddG/>: view==='ViewNotes'? <p>notes</p>:view==='List'&&display.length>0?
+                       {view==='List'?<input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>:<></>} 
+                        {view==='Add1'? <AddG/>: view==='ViewNotes'&&notes.length>0? 
+                        notes.map((data)=>{
+                            return(
+                                <div className='messDiv'>
+                                    <h2>
+                                        {data.sender}
+                                    </h2>
+                                    
+                                    <Row>
+                                        <Col s={10} offest='s1'>{data.message}</Col>
+                                    </Row>
+                                </div>
+                            )
+                        })
+                        :view==='List'&&display.length>0?
                         display.map((data,i)=>{
                             return(
                             <Row key={i} >
