@@ -10,26 +10,28 @@ function Home(props){
         <CardPanel className='bg'>
         <img src={blroseb} id="bg3" alt=""></img>
         <img src={blroseb} id="bg4" alt=""></img>
-            <h1 className='title1'>
+        <div id='dTitle'>
+        <h1 className='title1'>
               Justin Henry
             </h1>
             <h1 className='title1'>
               & 
             </h1>
             <h1 className='title1'>
-              Genevra Mirenda
+              Genevra Henry
             </h1>
             <div className='title3'>
             <h2 className='title4'>
-              November 14, 2020
+              November 13, 2021
             </h2>
             <h2 className='title4'>
               4 pm
-            </h2>
+            </h2> 
             </div>
+        </div>
           </CardPanel>
       </Col>
-      <Col s={12} id ='tcard' className='show-on-small-only'>
+      <Col s={12} id ='tcard' className='hide-on-med-and-up'>
         <CardPanel className='mBg'>
         {/* <img src={blroseb} id="bg3" alt=""></img>
         <img src={blroseb} id="bg4" alt=""></img> */}
@@ -41,7 +43,7 @@ function Home(props){
               & 
             </p>
             <p className='title3'>
-              Genevra Mirenda
+              Genevra Henry
             </p>
             <div className='title3'>
             <p className='title3'>
