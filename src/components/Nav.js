@@ -31,7 +31,7 @@ function Nav (){
                
                     <Link to={`/Locations`} >Locations</Link>  
 
-                    <Link to={`/Gallery`} >Gallery</Link>  
+                    {/* <Link to={`/Gallery`} >Gallery</Link>   */}
 
                 <NavItem href='https://www.zola.com/wedding/justinandgenna2020/registry'>
                     Registry

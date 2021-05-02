@@ -15,7 +15,7 @@ function Locations(){
     return(
         <div className= 'pContent'>
             <Row>
-                <Col s={10} m={6} offset='s1 m3' >
+                <Col s={12} m={6} offset=' m3' >
                     <CardPanel className='panel'>
                         <div className='card-title title1'>
                             Fairfield Inn & Suites by Mariott Charlotesville DownTown/University Area
@@ -41,7 +41,7 @@ function Locations(){
                 </Col>
             </Row>
             <Row>
-                <Col s={10} m={6} offset='s1 m3' >
+                <Col s={12} m={6} offset=' m3' >
                     <CardPanel className='panel'>
                         <div className='card-title title1'>
                             The Club at Glennmore

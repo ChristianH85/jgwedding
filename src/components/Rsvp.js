@@ -85,8 +85,8 @@ console.log(e.target.value)
         
         <div className='pContent'>
             <Row>
-                <Col s={10} m={6} offset='s1 m3'>
-                    <CardPanel className='panel'>
+                <Col s={12} m={6} offset='m3'>
+                    <CardPanel className='rsvpPanel'>
                         {gSelected===true?
                         <Row className='justify-content-center'>                           
                             <Col s={10}offset='s1'>

@@ -8,7 +8,7 @@ import HotelInfo from './components/HotelInfo.js';
 import Locations from './components/Locations.js';
 import Row from 'react-materialize/lib/Row';
 import Admin from './components/Admin.js';
-import Photos from './components/Photo.js';
+// import Photos from './components/Photo.js';
 import Nav from './components/Nav.js';
 import axios from 'axios'
 
@@ -89,9 +89,9 @@ function App(props) {
         <Route path='/Admin'>
           <Admin c={gInfo} con={guestL}/>
         </Route>
-        <Route path='/Gallery'>
+        {/* <Route path='/Gallery'>
           <Photos/>
-        </Route>
+        </Route> */}
       </Switch>
 </Router> 
   )

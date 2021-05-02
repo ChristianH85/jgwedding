@@ -8,7 +8,7 @@ function Menu (){
   let rsvp='  RSVP'
   let hotel='  Hotel'
   let venue='  Venue'
-  let gallery='  Gallery'
+  // let gallery='  Gallery'
   // let list=' Admin'
     return(   
       <div className='nav'>
@@ -53,12 +53,12 @@ function Menu (){
             {venue}
             </Link>
             </button>
-            <button className='btnNav'>
+            {/* <button className='btnNav'>
             <Link to= '/Gallery'>
             <Icon small>collections</Icon>
             {gallery}
             </Link>
-            </button>
+            </button> */}
             
             {/* <div>
             <Link to= '/Registry' >
