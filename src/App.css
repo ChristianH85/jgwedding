@@ -342,6 +342,14 @@ textarea{
   font-size:1.5em;
   font-weight:600;
 }
+.messDiv{
+  background-color:#2d5fc4d8;
+  padding:.3em;
+  border-radius: 8px;
+  border: 1px solid rgba(247, 202, 202, 0.18);
+  box-shadow: 0 3px 7px 0 rgba(147, 147, 219, 0.37);
+  margin-bottom: .3em;
+}
 .panel {
   background: #ebe0d0;
   box-shadow: 0 3px 7px 0 rgba(147, 147, 219, 0.37);
@@ -392,6 +400,7 @@ input[type=text]:not(.browser-default){
   border-bottom:2px solid white;
   font-size: 1.5em;
 }
+
 input{
   color:white;
   font-size: 1.5em;
@@ -450,7 +459,7 @@ label{
 }
 .select-wrapper{
   width:100vw;
-  background-color:rgb(250, 243, 229);
+  background: #5dc2eb59;
   border-radius: 8px;
 }
 .dropdown-content li>span {

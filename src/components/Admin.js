@@ -28,7 +28,7 @@ function Admin(props){
               setDec(not)
             }) 
         .catch(err=>console.log(err))
-            axios.get('https://jgweddingapi.herokuapp.com/api/messages').then(data=>{setNotes(data)})
+            axios.get('https://jgweddingapi.herokuapp.com/api/messages').then(data=>{setNotes(data.data)})
         // axios.get('http://localhost:8080/api').then(data=>console.log(data)).catch(err=>console.log(err))
       },[])
     // const popLists=()=>{
@@ -58,7 +58,7 @@ function Admin(props){
                 break;
             case "ViewNotes":
                 setView('ViewNotes')
-                console.log('notes')
+                console.log(notes)
                 break;
                 // setDisplay()
             default:
@@ -160,14 +160,14 @@ function Admin(props){
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
                        {view==='List'?<input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>:<></>} 
-                        {view==='Add1'? <AddG/>: view==='ViewNotes'&&notes.length>0? 
-                        notes.map((data)=>{
+                        {view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
+                        notes.map((data)=>{console.log(data)
                             return(
                                 <div className='messDiv'>
-                                    <h2>
+                                    <h5>
                                         {data.sender}
-                                    </h2>
-                                    
+                                    </h5>
+                                    <hr/>
                                     <Row>
                                         <Col s={10} offest='s1'>{data.message}</Col>
                                     </Row>
@@ -200,7 +200,7 @@ function Admin(props){
                                     </Modal></Col>
                                     </div>
                             </Row>
-                        )}):<div></div>}
+                        )}):<div></div>)}
                     </Col>
                 </Row>
                 

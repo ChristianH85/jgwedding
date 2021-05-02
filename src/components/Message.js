@@ -17,7 +17,7 @@ function Message (){
         else{
             setSender('')
             setMess('')
-            axios.post('https://jgweddingapi.herokuapp.com/api/message',{sender:sender,message:message}.then((data)=>{console.log(data)}))
+            axios.post('https://jgweddingapi.herokuapp.com/api/message',{sender:sender,message:message}).then((data)=>{console.log(data)})
             setErrMess('Message Sent')}
     }
     return(
