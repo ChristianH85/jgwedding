@@ -22,7 +22,7 @@ function AddG(){
        
             <Row>
                 <Col s={10} offset='s1'>
-                    <CardPanel  className='panel'>
+                    <CardPanel  className='addPanel'>
                         <input placeholder='First Name'value={fName} onChange={(e)=>{setFName(e.target.value)}}></input>
                         <input placeholder='Last Name'value={lName} onChange={(e)=>{setLName(e.target.value)}}></input>
                         {/* <label class="switch">

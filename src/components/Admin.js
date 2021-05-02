@@ -87,8 +87,8 @@ function Admin(props){
             case  true:
                 console.log('2nd')
                 // let l=filterWord.length
-                let updatedList= await allG.filter(item=>{return item.fullname.includes(filterWord)}) 
-                console.log(updatedList)
+                let updatedList= await display.filter(item=>{return item.fullname.toLowerCase().includes(filterWord.toLowerCase())}) 
+                setDisplay(updatedList)
                 break;
             default:console.log('default')
         }
@@ -157,7 +157,7 @@ function Admin(props){
                         </div>
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
-                        <input type='text' placeholder='filter guests by last name' onChange={(e)=>{filterList(e)}}></input>
+                        <input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>
                         {view==='Add1'? <AddG/>: view==='ViewNotes'? <p>notes</p>:view==='List'&&display.length>0?
                         display.map((data,i)=>{
                             return(
