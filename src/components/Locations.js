@@ -13,7 +13,7 @@ function Locations(){
         }
     }
     return(
-        <div className= 'pContent location' >
+        <div className= 'pContent contentFx' >
             <Row>
                 <Col s={12} m={6} offset=' m3' >
                     <CardPanel className='panel'>

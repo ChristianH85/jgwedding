@@ -17,7 +17,7 @@ function App(props) {
   const [currentG, setG]=useState('')
   const [names, setNames]=useState('')
   const [gInfo, gList]= useState('')
-  const[message,setM]= useState('')
+  const[message,setM]= useState('Search Guest List for your name and update your details.')
 
   useEffect(()=>{
     axios.get('https://jgweddingapi.herokuapp.com/api')

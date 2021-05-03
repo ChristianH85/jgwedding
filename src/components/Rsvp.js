@@ -83,7 +83,7 @@ console.log(e.target.value)
 }
     return(
         
-        <div className='pContent'>
+        <div className='pContent contentFx'>
             <Row>
                 <Col s={12} m={6} offset='m3'>
                     <CardPanel className='rsvpPanel'>

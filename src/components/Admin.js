@@ -134,84 +134,83 @@ function Admin(props){
     //     }
     // }
     return(
-
         <div className='pContent'>
-            {verify==='terioaustin19'?
+        {verify==='terioaustin19'?
 
-            <div >
-                <div className='hide-on-med-and-up'>
-                    <Select name="admin" id="opt-select" onChange={(e)=>{toggleDisplay(e.target.value)}}>
-                        <option value="" disabled>Admin Options:</option>
-                        <option value="Add1">Add Guest</option>
-                        <option value="ShowA">Show Attending</option>
-                        <option value="ShowD">Show Cannot Attend</option>
-                        <option value="ShowAll">Show All</option>
-                        <option value="ViewNotes">View Notes</option>
-                    </Select>
-                </div>
-                <Row id='adminDisplay'>
-                    <Col m={2}>
-                        <div className='sidebar hide-on-small-only'>
-                            <button className='adminbtn' value='Add1' onClick={(e)=>{toggleDisplay(e.target.value)}}>Add Guest</button>
-                            <button className='adminbtn' value="ShowA" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Attending</button>
-                            <button className='adminbtn' value="ShowD" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Cannot Attend</button>
-                            <button className='adminbtn' value="ShowAll" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show All</button>
-                            <button className='adminbtn' value="ViewNotes" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Notes</button>
-                        </div>
-                    </Col>
-                    <Col m={10} s={12} id= 'disp'>
-                       {view==='List'?<input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>:<></>} 
-                        {view==='List'?
-                        display.map((data,i)=>{
-                            console.log(data)
-                            return(
-                            <Row key={i} >
-                                <div className='person'>
-                                <Col s={6}><p>{data.fullname}</p></Col>
-                                <Col s={4}><p>{data.status===true?'Attending':data.status=false? "Not Attending":"pending"}</p></Col>
-                                <Col s={2}><Modal
-                                    actions={[
-                                        <Button flat modal="close" node="button" waves="green">Cancel</Button>,
-                                        <Button flat modal="close" className='deleteG'node="button" waves="red" name={data._id} onClick={(e)=>{deleteGuest(e.target.name)}}>Delete</Button>
-                                    ]}
-                                    header={`Delete ${data.fullname} `}
-                                    id="Modal-0"
-                                    open={false}
-                                    options={{ 
-                                        inDuration: 250,
-                                        opacity: 0.5,
-                                        outDuration: 250,
-                                        preventScrolling: true
-                                    }}     
-                                    trigger={<Button className='deleteG'node="button">X</Button>}
-                                    >
-                                    </Modal></Col>
-                                    </div>
-                            </Row>
-                        )}):
-                        view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
-                        notes.map((data)=>{console.log(data)
-                            return(
-                                <div className='messDiv'>
-                                    <h5>
-                                        {data.sender}
-                                    </h5>
-                                    <hr/>
-                                    <Row>
-                                        <Col s={10} offest='s1'>{data.message}</Col>
-                                    </Row>
+        <div >
+            <div className='hide-on-med-and-up'>
+                <Select name="admin" id="opt-select" onChange={(e)=>{toggleDisplay(e.target.value)}}>
+                    <option value="" disabled>Admin Options:</option>
+                    <option value="Add1">Add Guest</option>
+                    <option value="ShowA">Show Attending</option>
+                    <option value="ShowD">Show Cannot Attend</option>
+                    <option value="ShowAll">Show All</option>
+                    <option value="ViewNotes">View Notes</option>
+                </Select>
+            </div>
+            <Row id='adminDisplay'>
+                <Col m={2}>
+                    <div className='sidebar hide-on-small-only'>
+                        <button className='adminbtn' value='Add1' onClick={(e)=>{toggleDisplay(e.target.value)}}>Add Guest</button>
+                        <button className='adminbtn' value="ShowA" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Attending</button>
+                        <button className='adminbtn' value="ShowD" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Cannot Attend</button>
+                        <button className='adminbtn' value="ShowAll" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show All</button>
+                        <button className='adminbtn' value="ViewNotes" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Notes</button>
+                    </div>
+                </Col>
+                <Col m={10} s={12} id= 'disp'>
+                   {view==='List'?<input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>:<></>} 
+                    {view==='List'?
+                    display.map((data,i)=>{
+                        console.log(data)
+                        return(
+                        <Row key={i} >
+                            <div className='person'>
+                            <Col s={6}><p>{data.fullname}</p></Col>
+                            <Col s={4}><p>{data.status===true?'Attending':data.status=false? "Not Attending":"pending"}</p></Col>
+                            <Col s={2}><Modal
+                                actions={[
+                                    <Button flat modal="close" node="button" waves="green">Cancel</Button>,
+                                    <Button flat modal="close" className='deleteG'node="button" waves="red" name={data._id} onClick={(e)=>{deleteGuest(e.target.name)}}>Delete</Button>
+                                ]}
+                                header={`Delete ${data.fullname} `}
+                                id="Modal-0"
+                                open={false}
+                                options={{ 
+                                    inDuration: 250,
+                                    opacity: 0.5,
+                                    outDuration: 250,
+                                    preventScrolling: true
+                                }}     
+                                trigger={<Button className='deleteG'node="button">X</Button>}
+                                >
+                                </Modal></Col>
                                 </div>
-                            )
-                        })
-                        :<div></div>)}
-                    </Col>
-                </Row>
-                
-            </div>:
-                    <textarea onChange={checkword} value={verify}></textarea>
-                }
-        </div>
-       
-    )
+                        </Row>
+                    )}):
+                    view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
+                    notes.map((data)=>{console.log(data)
+                        return(
+                            <div className='messDiv'>
+                                <h5>
+                                    {data.sender}
+                                </h5>
+                                <hr/>
+                                <Row>
+                                    <Col s={10} offest='s1'>{data.message}</Col>
+                                </Row>
+                            </div>
+                        )
+                    })
+                    :<div></div>)}
+                </Col>
+            </Row>
+            
+        </div>:
+                <textarea onChange={checkword} value={verify}></textarea>
+            }
+    </div>
+   
+)
 }
 export default Admin
