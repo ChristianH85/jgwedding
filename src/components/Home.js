@@ -5,12 +5,12 @@ import blroseb from '../images/blroseb.png'
 
 function Home(props){
     return(
-    <Row >
+    <Row className='pContent'>
       <Col s={12} id ='tcard' className='hide-on-small-only'>
         <CardPanel className='bg'>
         <img src={blroseb} id="bg3" alt=""></img>
         <img src={blroseb} id="bg4" alt=""></img>
-        <div id='dTitle'>
+        {/* <div id='dTitle' className='show-on-large'>
         <h1 className='title1'>
               Justin Henry
             </h1>
@@ -28,35 +28,48 @@ function Home(props){
               4 pm
             </h2> 
             </div>
-        </div>
+        </div> */}
           </CardPanel>
       </Col>
       <Col s={12} id ='tcard' className='hide-on-med-and-up'>
         <CardPanel className='mBg'>
         {/* <img src={blroseb} id="bg3" alt=""></img>
         <img src={blroseb} id="bg4" alt=""></img> */}
-        <div id='mTitle'>
+        {/* <div id='mTitle'>
             <p className='title3'>
               Justin Henry
-            </p>
-            <p className='title3'>
               & 
-            </p>
-            <p className='title3'>
               Genevra Henry
             </p>
-            <div className='title3'>
-            <p className='title3'>
+            <hr/>
+            
+            <p className='title2'>
               November 13, 2021
             </p>
-            <p className='title3'>
-              4 pm
+            <p className='title2'>
+              4:00 pm
             </p>
-            </div>
-        </div>
+            
+        </div> */}
             
           </CardPanel>
       </Col>    
+      <div id='mTitle'>
+            <p className='title3'>
+              Justin Henry
+              & 
+              Genevra Henry
+            </p>
+            <hr/>
+            
+            <p className='title2'>
+              November 13, 2021
+            </p>
+            <p className='title2'>
+              4:00 pm
+            </p>
+            
+        </div>
     </Row>
     )
 }

@@ -1,14 +1,34 @@
 import React from 'react'
-import { Icon, Navbar, NavItem } from 'react-materialize'
+import { Icon, Navbar, NavItem, Row } from 'react-materialize'
 import{Link} from 'react-router-dom'
 function Nav (){
 
     return(
         <div>
+            <navbar id='mdNav'className='hide-on-small'>
+                <Row className='align-content-center hide-on-small-only'>
+                    <p className='title1'>Justin & Genna</p>
+                </Row>
+                <Row id='navLinks' className='hide-on-small-only'>
+                    
+                        
+                        <Link to={`/`} className='navL'>Home</Link>  
+                        <Link to={`/Rsvp`} className='navL'>RSVP</Link>
+                        <Link to={`/Locations`} className='navL'>Locations</Link> 
+                        <Link to={`/Message`} className='navL'>Message</Link>  
+
+                        <NavItem className='navL' href='https://www.zola.com/wedding/justinandgenna2020/registry'>
+                            Registry
+                        </NavItem>
+                </Row>
+                
+            </navbar>
+            <Row className='hide-on-med-and-up'>
             <Navbar
-                alignLinks="right"
-                brand={<a className="brand-logo" href="/">Genna &  Justin</a>}
+                // alignLinks="right"
+                brand={<a className="brand-logo" href="/">Justin &  Genna</a>}
                 id="mobile-nav"
+                
                 menuIcon={<Icon>menu</Icon>}
                 options={{
                     draggable: true,
@@ -37,6 +57,8 @@ function Nav (){
                     Registry
                 </NavItem>
                 </Navbar>
+            </Row>
+            
         </div>
     )
 }

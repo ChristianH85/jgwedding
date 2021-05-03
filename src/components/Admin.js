@@ -20,6 +20,7 @@ function Admin(props){
       useEffect(()=>{
         axios.get('https://jgweddingapi.herokuapp.com/api')
         .then(async data=>{
+            console.log(data)
               setAllG(data.data)
               setDisplay(data.data)
               let attending=await data.data.filter(person=>{return person.status===true})
@@ -160,22 +161,9 @@ function Admin(props){
                     </Col>
                     <Col m={10} s={12} id= 'disp'>
                        {view==='List'?<input type='text' placeholder='filter guests by name' id='filterIn' onChange={(e)=>{filterList(e)}}></input>:<></>} 
-                        {view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
-                        notes.map((data)=>{console.log(data)
-                            return(
-                                <div className='messDiv'>
-                                    <h5>
-                                        {data.sender}
-                                    </h5>
-                                    <hr/>
-                                    <Row>
-                                        <Col s={10} offest='s1'>{data.message}</Col>
-                                    </Row>
-                                </div>
-                            )
-                        })
-                        :view==='List'&&display.length>0?
+                        {view==='List'?
                         display.map((data,i)=>{
+                            console.log(data)
                             return(
                             <Row key={i} >
                                 <div className='person'>
@@ -200,7 +188,22 @@ function Admin(props){
                                     </Modal></Col>
                                     </div>
                             </Row>
-                        )}):<div></div>)}
+                        )}):
+                        view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
+                        notes.map((data)=>{console.log(data)
+                            return(
+                                <div className='messDiv'>
+                                    <h5>
+                                        {data.sender}
+                                    </h5>
+                                    <hr/>
+                                    <Row>
+                                        <Col s={10} offest='s1'>{data.message}</Col>
+                                    </Row>
+                                </div>
+                            )
+                        })
+                        :<div></div>)}
                     </Col>
                 </Row>
                 
