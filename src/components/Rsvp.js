@@ -1,5 +1,5 @@
 import React, {useState, useEffect}from 'react'
-import {CardPanel}from 'react-materialize'
+import {CardPanel, Select}from 'react-materialize'
 import Row from 'react-materialize/lib/Row'
 import Col from 'react-materialize/lib/Col'
 import RadioGroup from 'react-materialize/lib/RadioGroup'
@@ -16,6 +16,8 @@ const [gSelected, selectG]= useState(false)
 const [plusStatus, updatePlus]=useState('')
 const[comments, upComm]= useState('')
 const[guest, setGuest]=useState(props.G)
+const [order,setOrder]=useState('')
+const [plusOrder,setPlusOrder]=useState('')
 // console.log(props.G)
 useEffect(() => {
     
@@ -42,15 +44,32 @@ let nameInput=(e,val)=>{
     setName(e.target.value)
 }
 let upG=()=>{
+    if((!plusStatus)||(plusStatus==="No plus 1")||(guest.plus===false)){
     let guest={
         fullname:name,
         status:isAttending,
         plus1:plusStatus,
+        order:order,
         comments:comments
     }
+    console.log(guest)
     props.update(guest)
     setName('')
     selectG(false)
+    }else if((plusStatus==="Bringing +1")&&(!plusOrder)){
+        console.log("you have plus1 Attending but have not selected an order for them")
+    }else if((plusStatus==="Bringing +1")&&(plusOrder)){
+        let guest={
+            fullname:name,
+            status:isAttending,
+            plus1:plusStatus,
+            order:order,
+            comments:comments,
+            pOrder:plusOrder
+        }
+        console.log(guest)
+        props.upPlus(guest)
+    }
 }
 let Input=(e)=>{
     console.log(e)
@@ -64,7 +83,7 @@ let goBack=()=>{
     selectG(false)
     upComm('')
     updatePlus('')
-
+    setPlusOrder('')
 }
 // const chEmail=(e)=>{
 //     setEmail(e.target.value)
@@ -72,14 +91,15 @@ let goBack=()=>{
 let comm=(e)=>{
     upComm(e.target.value)
 }
-let plus1=(e,val)=>{
-    if(e.target.value==='on'){
+let plus1=(val)=>{
+    // console.log(val)
+    if(val===true){
         updatePlus('Bringing +1')
     }
-    else if(e.target.value==='off'){
+    else if(val===false){
         updatePlus('No plus 1')
     }
-console.log(e.target.value)
+// console.log(e.target.value)
 }
     return(
         
@@ -104,13 +124,31 @@ console.log(e.target.value)
                                     }
                                 ]} value= {isAttending.toString()}/>
                             </Col>
+                            <Col s={10}offset='s1'>
+                            <p className='card-titl title1'>Entree</p>
+                            </Col>                            
+                                <Col s={12} >
+                                     <Select  id='entree' onChange={(e)=>{setOrder(e.target.value)}}value={order}>
+                                        <option disabled className="menuItem" value=''></option>
+                                        <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
+                                        <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
+                                    </Select>
+                                </Col>                            
                             {guest.plus===true?
                             <Col s={10} offset='s1'>
-                                <Switch onChange={plus1} offLabel='No +1'onLabel='Bringing +1'></Switch>
+                                <Switch onChange={(e)=>{plus1(e.target.checked)}} offLabel='No +1'onLabel='Bringing +1'></Switch>
                             </Col>:
-                            <div>
-
-                            </div>
+                            null
+                            }
+                            {plusStatus==='Bringing +1'?
+                                <Col s={12} >
+                                    <p className='card-titl title1'>+1 Entree</p>
+                                    <Select  id='entree' onChange={(e)=>{setPlusOrder(e.target.value)}}value={plusOrder}>
+                                        <option disabled className="menuItem" value=''></option>
+                                        <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
+                                        <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
+                                    </Select>
+                                </Col>:null
                             }
                             <Row>
                                 <Col s={10} offset='s1'>

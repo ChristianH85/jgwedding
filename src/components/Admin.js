@@ -8,32 +8,51 @@ function Admin(props){
     const [coming,setComing]=useState([])
     const [decline,setDec]= useState([])
     const [display,setDisplay]= useState([])
+    // const [comments,setComments]= useState([])
     const [view, setView]=useState('')
     const [notes,setNotes]= useState([])
-    // const [wait,setWait]= useState('')
     const [verify, setVar]= useState('')
-    // const[glist, setGlist]= useState(props.c)
-    // useEffect(() => {
-    //     setGlist(props.c);
-    //   }, [props.c])
-
+    // const [filet, setFilet]= useState(0)
+    // const [salmon, setSalmon]= useState(0)
       useEffect(()=>{
         axios.get('https://jgweddingapi.herokuapp.com/api')
         .then(async data=>{
             console.log(data)
               setAllG(data.data)
               setDisplay(data.data)
+            //   getComments()
               let attending=await data.data.filter(person=>{return person.status===true})
               let not=await data.data.filter(person=>{return person.status===false})
               setComing(attending)
+            //   let food = await tallyFood()
+            //   setFilet(food[0])
+            //   setSalmon(food[1])
+            //   console.log('food',food)
               setDec(not)
             }) 
         .catch(err=>console.log(err))
             axios.get('https://jgweddingapi.herokuapp.com/api/messages').then(data=>{setNotes(data.data)})
         // axios.get('http://localhost:8080/api').then(data=>console.log(data)).catch(err=>console.log(err))
       },[])
-    // const popLists=()=>{
-    //     props.con()
+    // const getComments= async()=>{
+    //     let gWithComments= await allG.filter(g=>{return g.comments.length >0})
+    //     let allComments = await gWithComments.map(g=>{return {name:g.fullname,comments:g.comments}})
+    //     setComments(allComments)
+    // }
+
+    // const tallyFood=()=>{
+    //     let Filet=0
+    //     let Salmon =0
+    //     coming.map(guest=>{
+            
+    //         if(guest.order && guest.pOrder){
+    //          return (  guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1, 
+    //             guest.pOrder==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 )
+    //         }else if(guest.order && !guest.pOrder){
+    //             return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 
+    //         }
+    //     })
+    //     return[Filet,Salmon]
     // }
     const toggleDisplay=(key)=>{
         console.log(key)
@@ -61,6 +80,10 @@ function Admin(props){
                 setView('ViewNotes')
                 console.log(notes)
                 break;
+            case "GInfo":
+                setView('GInfo')
+                console.log(notes)
+                break;
                 // setDisplay()
             default:
                 setDisplay(allG)
@@ -73,7 +96,6 @@ function Admin(props){
         setVar(e.target.value)
     }
     const deleteGuest=(id)=>{
-        // console.log(id)
         axios.delete(`https://jgweddingapi.herokuapp.com/api/delete/${id}`).then(data=>console.log(data))
     }
     const filterList=async(e)=>{
@@ -96,43 +118,6 @@ function Admin(props){
             default:console.log('default')
         }
     }
-    // const showLists=()=>{
-    //     if(glist){
-    //         let attend = []
-    //         let dec = []
-    //         let maybe= []
-    //         glist.map(data=>{
-    //             if(data.status===undefined){
-    //                 // console.log(data.fullname)
-    //                 let obj={
-    //                     name:data.fullname,
-    //                     comments: data.comments,
-    //                 }
-    //                 maybe.push(obj)
-    //             }
-    //             else if(data.status==='true'){
-    //                 let obj={
-    //                     name:data.fullname,
-    //                     comments: data.comments,
-    //                 }
-    //                 console.log(data.fullname)
-    //                 attend.push(obj)
-    //             }
-    //             else if(data.status==='false'){
-    //                 let obj={
-    //                     name:data.fullname,
-    //                     comments: data.comments,
-    //                 }
-    //                 console.log(data.fullname)
-    //                 dec.push(obj)
-    //             }
-    //             setComing(attend) 
-    //             setWait(maybe) 
-    //             setDec(dec)
-    //             return attend
-    //         })
-    //     }
-    // }
     return(
         <div className='pContent'>
         {verify==='terioaustin19'?
@@ -146,6 +131,7 @@ function Admin(props){
                     <option value="ShowD">Show Cannot Attend</option>
                     <option value="ShowAll">Show All</option>
                     <option value="ViewNotes">View Notes</option>
+                    <option value="GInfo">Guest Info</option>
                 </Select>
             </div>
             <Row id='adminDisplay'>
@@ -156,6 +142,7 @@ function Admin(props){
                         <button className='adminbtn' value="ShowD" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Cannot Attend</button>
                         <button className='adminbtn' value="ShowAll" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show All</button>
                         <button className='adminbtn' value="ViewNotes" onClick={(e)=>{toggleDisplay(e.target.value)}}>Show Notes</button>
+                        <button className='adminbtn' value="GInfo" onClick={(e)=>{toggleDisplay(e.target.value)}}>Guest Info</button>
                     </div>
                 </Col>
                 <Col m={10} s={12} id= 'disp'>
@@ -164,10 +151,15 @@ function Admin(props){
                     display.map((data,i)=>{
                         console.log(data)
                         return(
+                            data.status===true?
                         <Row key={i} >
                             <div className='person'>
                             <Col s={6}><p>{data.fullname}</p></Col>
-                            <Col s={4}><p>{data.status===true?'Attending':data.status=false? "Not Attending":"pending"}</p></Col>
+                            {data.p1status?
+                            <Col s={1}><p>{data.p1status==="Bringing +1"?"+1":1}</p></Col>:<Col s={1}><p>1</p></Col>
+                            }
+                            {/* <Col s={1}><p>{data.fullname}</p></Col> */}
+                            <Col s={2}><p className='attending'>Attending</p></Col>
                             <Col s={2}><Modal
                                 actions={[
                                     <Button flat modal="close" node="button" waves="green">Cancel</Button>,
@@ -176,19 +168,50 @@ function Admin(props){
                                 header={`Delete ${data.fullname} `}
                                 id="Modal-0"
                                 open={false}
-                                options={{ 
-                                    inDuration: 250,
-                                    opacity: 0.5,
-                                    outDuration: 250,
-                                    preventScrolling: true
-                                }}     
                                 trigger={<Button className='deleteG'node="button">X</Button>}
                                 >
                                 </Modal></Col>
                                 </div>
-                        </Row>
+                        </Row>:
+                        <Row key={i} >
+                        <div className='person'>
+                        <Col s={6}><p>{data.fullname}</p></Col>
+                        <Col s={4}><p className='pending'>Pending</p></Col>
+                        <Col s={2}><Modal
+                            actions={[
+                                <Button flat modal="close" node="button" waves="green">Cancel</Button>,
+                                <Button flat modal="close" className='deleteG'node="button" waves="red" name={data._id} onClick={(e)=>{deleteGuest(e.target.name)}}>Delete</Button>
+                            ]}
+                            header={`Delete ${data.fullname} `}
+                            id="Modal-0"
+                            open={false}   
+                            trigger={<Button className='deleteG'node="button">X</Button>}
+                            >
+                            </Modal></Col>
+                            </div>
+                    </Row>
                     )}):
-                    view==='Add1'? <AddG/>: (view==='ViewNotes')&&(notes.length>0? 
+                    view==='Add1'? <AddG/>: 
+                    view==='GInfo'?
+                    <div className='container justify-content-center'>
+                        <Row>
+                            <label for='totalA' value="Attending Guest">Total Guest List</label>
+                            <h5 id='totalA'> {allG?allG.length:'err'}</h5>
+                        </Row>
+                        <Row>
+                            <label for='totalA' value="Attending Guest">Total Attending Guest</label>
+                            <h5 id='totalA'> {coming?coming.length:null}</h5>
+                        </Row>
+                        {/* <Row>
+                            <label for='totalA' value="Attending Guest">Total Filet Orders</label>
+                            <h5 id='totalA'> {filet}</h5>
+                        </Row>
+                        <Row>
+                            <label for='totalA' value="Attending Guest">Total Filet Orders</label>
+                            <h5 id='totalA'> {salmon}</h5>
+                        </Row> */}
+                    </div>:
+                    (view==='ViewNotes')&&(notes.length>0? 
                     notes.map((data)=>{console.log(data)
                         return(
                             <div className='messDiv'>
@@ -207,7 +230,7 @@ function Admin(props){
             </Row>
             
         </div>:
-                <textarea onChange={checkword} value={verify}></textarea>
+                <textarea placeholder='P@$$word' className='Password' onChange={checkword} value={verify}/>
             }
     </div>
    

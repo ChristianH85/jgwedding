@@ -68,6 +68,31 @@ function App(props) {
         }else{setM('error updating')}
       })
   }
+  const upStatwG= (data)=>{
+    console.log("data here get your data")
+    console.log(data)
+    console.log(currentG)
+    let guest=currentG._id
+    let updateObj={ 
+      fullname: currentG.fullname,
+      firstname:currentG.firstname,
+      lastName:currentG.lastName,
+      plus:currentG.plus,
+      status: data.status,
+      order:data.order,
+      p1status: data.plus1,
+      pOrder:data.pOrder,
+      comments:data.comments
+    }
+
+    axios.post(`https://jgweddingapi.herokuapp.com/api/updateuserPlus/${guest}`,updateObj)
+    .then((data)=>{
+        console.log(data)
+        if(data.status===200){
+          setM("Thank You for Replying!")
+        }else{setM('error updating')}
+      })
+  }
   return (
     
   <Router>
@@ -79,7 +104,7 @@ function App(props) {
           <Home />
         </Route>
         <Route path='/Rsvp'>
-          <Rsvp M={message} G={currentG}update={upStat} names={names} pop={populateG} />
+          <Rsvp M={message} G={currentG}update={upStat} names={names} pop={populateG} upPlus={upStatwG}/>
         </Route>
         <Route path='/Locations'>
           <Locations/> 

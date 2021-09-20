@@ -13,7 +13,7 @@ function Nav (){
                     
                         
                         <Link to={`/`} className='navL'>Home</Link>  
-                        {/* <Link to={`/Rsvp`} className='navL'>RSVP</Link> */}
+                        <Link to={`/Rsvp`} className='navL'>RSVP</Link>
                         <Link to={`/Locations`} className='navL'>Locations</Link> 
                         <Link to={`/Message`} className='navL'>Message</Link>  
 
@@ -46,7 +46,7 @@ function Nav (){
                     <Link to={`/`} >Home</Link>  
     
                 
-                    {/* <Link to={`/Rsvp`} >RSVP</Link>   */}
+                    <Link to={`/Rsvp`} >RSVP</Link>  
                 
                
                     <Link to={`/Locations`} >Locations</Link>  
