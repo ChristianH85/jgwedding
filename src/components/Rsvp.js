@@ -179,6 +179,10 @@ let plus1=(val)=>{
                             <Col s={10} offset='s1'>
                                 <p>{props.M?props.M:''}</p>
                             </Col>
+                            <hr/>
+                            <Col s={10} offset='s1'>
+                                <p>If you cant find your name please send us a message!</p>
+                            </Col>
                         </Row>
                         // </div>
                         }
