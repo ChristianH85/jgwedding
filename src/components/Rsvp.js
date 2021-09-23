@@ -173,6 +173,7 @@ let plus1=(val)=>{
                         </Row>:
                         <Row>
                             <Col s={12} >
+                                <label>Guestlist</label>
                                 <Autocomplete className='auto' options={{data:guests,onAutocomplete:function(text){Input(text)}
                                 }}  placeholder='Search List' onChange={nameInput}  value={name}/>
                             </Col>
