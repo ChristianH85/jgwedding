@@ -132,6 +132,7 @@ let plus1=(val)=>{
                                         <option disabled className="menuItem" value=''></option>
                                         <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
                                         <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
+                                        <option className="menuItem" value='Vegatarian Option'>Vegatarian Option(TBD)</option>
                                     </Select>
                                 </Col>                            
                             {guest.plus===true?
@@ -147,6 +148,7 @@ let plus1=(val)=>{
                                         <option disabled className="menuItem" value=''></option>
                                         <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
                                         <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
+                                        <option className="menuItem" value='Vegatarian Option'>Vegatarian Option(TBD)</option>
                                     </Select>
                                 </Col>:null
                             }
