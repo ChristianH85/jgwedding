@@ -178,8 +178,9 @@ let plus1=(val)=>{
                             </Col>
                             <Col s={10} offset='s1'>
                                 <p>{props.M?props.M:''}</p>
+                                <hr/>
                             </Col>
-                            <hr/>
+                            
                             <Col s={10} offset='s1'>
                                 <p>If you cant find your name please send us a message!</p>
                             </Col>
