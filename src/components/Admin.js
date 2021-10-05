@@ -12,8 +12,8 @@ function Admin(props){
     const [view, setView]=useState('')
     const [notes,setNotes]= useState([])
     const [verify, setVar]= useState('')
-    // const [filet, setFilet]= useState(0)
-    // const [salmon, setSalmon]= useState(0)
+    const [filet, setFilet]= useState(0)
+    const [salmon, setSalmon]= useState(0)
       useEffect(()=>{
         axios.get('https://jgweddingapi.herokuapp.com/api')
         .then(async data=>{
@@ -24,10 +24,10 @@ function Admin(props){
               let attending=await data.data.filter(person=>{return person.status===true})
               let not=await data.data.filter(person=>{return person.status===false})
               setComing(attending)
-            //   let food = await tallyFood()
-            //   setFilet(food[0])
-            //   setSalmon(food[1])
-            //   console.log('food',food)
+              let food = await tallyFood()
+              setFilet(food[0])
+              setSalmon(food[1])
+              console.log('food',food)
               setDec(not)
             }) 
         .catch(err=>console.log(err))
@@ -40,20 +40,22 @@ function Admin(props){
     //     setComments(allComments)
     // }
 
-    // const tallyFood=()=>{
-    //     let Filet=0
-    //     let Salmon =0
-    //     coming.map(guest=>{
-            
-    //         if(guest.order && guest.pOrder){
-    //          return (  guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1, 
-    //             guest.pOrder==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 )
-    //         }else if(guest.order && !guest.pOrder){
-    //             return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 
-    //         }
-    //     })
-    //     return[Filet,Salmon]
-    // }
+    const tallyFood=()=>{
+        let Filet=0
+        let Salmon =0
+        let Vegatarian=0
+        coming.map(guest=>{
+            console.log('coming list')
+            console.log(guest.order)
+            if(guest.order && guest.pOrder){
+             return (  guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1, 
+                guest.pOrder==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 )
+            }else if(guest.order && !guest.pOrder){
+                return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 
+            }
+        })
+        return[Filet,Salmon]
+    }
     const toggleDisplay=(key)=>{
         console.log(key)
         // let option=e.tatget.value
@@ -202,14 +204,14 @@ function Admin(props){
                             <label for='totalA' value="Attending Guest">Total Attending Guest</label>
                             <h5 id='totalA'> {coming?coming.length:null}</h5>
                         </Row>
-                        {/* <Row>
+                        <Row>
                             <label for='totalA' value="Attending Guest">Total Filet Orders</label>
                             <h5 id='totalA'> {filet}</h5>
                         </Row>
                         <Row>
                             <label for='totalA' value="Attending Guest">Total Filet Orders</label>
                             <h5 id='totalA'> {salmon}</h5>
-                        </Row> */}
+                        </Row>
                     </div>:
                     (view==='ViewNotes')&&(notes.length>0? 
                     notes.map((data)=>{console.log(data)

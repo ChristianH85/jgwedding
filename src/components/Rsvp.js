@@ -128,8 +128,10 @@ let plus1=(val)=>{
                             <p className='card-titl title1'>Entree</p>
                             </Col>                            
                                 <Col s={12} >
-                                     <Select  id='entree' onChange={(e)=>{setOrder(e.target.value)}}value={order}>
-                                        <option disabled className="menuItem" value=''></option>
+                                     <Select  id='entree' onChange={(e)=>{
+                                         console.log(e.target.value)
+                                         setOrder(e.target.value)}}value={order}>
+                                        <option disabled className="menuItem" value=''>select menu item</option>
                                         <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
                                         <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
                                         <option className="menuItem" value='Vegatarian Option'>Vegatarian Option(TBD)</option>
@@ -145,7 +147,7 @@ let plus1=(val)=>{
                                 <Col s={12} >
                                     <p className='card-titl title1'>+1 Entree</p>
                                     <Select  id='entree' onChange={(e)=>{setPlusOrder(e.target.value)}}value={plusOrder}>
-                                        <option disabled className="menuItem" value=''></option>
+                                        <option disabled className="menuItem" value=''>select menu item</option>
                                         <option className="menuItem" value='Filet Mignon with a Demi-Glace'>Filet Mignon with a Demi-Glace</option>
                                         <option className="menuItem" value='Blackened Salmon with Sundried Tomato and Basil Chutney'>Blackened Salmon with Sundried Tomato and Basil Chutney</option>
                                         <option className="menuItem" value='Vegatarian Option'>Vegatarian Option(TBD)</option>

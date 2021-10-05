@@ -47,6 +47,7 @@ function App(props) {
     .catch(err=>console.log(err))
   }
   const upStat= (data)=>{
+    console.log('UpStat')
     console.log(data)
     console.log(currentG)
     let guest=currentG._id
@@ -55,6 +56,7 @@ function App(props) {
       firstname:currentG.firstname,
       lastName:currentG.lastName,
       plus:currentG.plus,
+      order:data.order,
       status: data.status,
       p1status: data.plus1,
       comments:data.comments
@@ -84,7 +86,7 @@ function App(props) {
       pOrder:data.pOrder,
       comments:data.comments
     }
-
+   
     axios.post(`https://jgweddingapi.herokuapp.com/api/updateuserPlus/${guest}`,updateObj)
     .then((data)=>{
         console.log(data)
