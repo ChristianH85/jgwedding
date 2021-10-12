@@ -5,7 +5,7 @@ function Nav (){
 
     return(
         <div>
-            <navbar id='mdNav'className='hide-on-small'>
+            <nav id='mdNav'className='hide-on-small'>
                 <Row className='align-content-center hide-on-small-only'>
                     <p className='title1'>Justin & Genna</p>
                 </Row>
@@ -22,7 +22,7 @@ function Nav (){
                         </NavItem>
                 </Row>
                 
-            </navbar>
+            </nav>
             <Row className='hide-on-med-and-up'>
             <Navbar
                 // alignLinks="right"
