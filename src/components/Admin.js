@@ -29,7 +29,7 @@ function Admin(props){
             setPlusCount(p1s.length)
             let not=await data.data.filter(person=>{return person.status===false})
             setComing(attending)
-            let food = await tallyFood()
+            let food = await tallyFood(attending)
             setFilet(food[0])
             setSalmon(food[1])
             setVeg(food[2])
@@ -46,11 +46,11 @@ function Admin(props){
     //     setComments(allComments)
     // }
 
-    const tallyFood=()=>{
+    const tallyFood=(attending)=>{
         let Filet=0
         let Salmon =0
         let Vegatarian=0
-        coming.map(guest=>{
+        attending.map(guest=>{
             console.log('coming list')
             console.log(guest.order)
             if(guest.order && guest.pOrder){
@@ -59,6 +59,7 @@ function Admin(props){
             }else if(guest.order && !guest.pOrder){
                 return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:guest.order==='Vegatarian Option'?Vegatarian+=1:Salmon+=1
             }
+            return null
         })
         return[Filet,Salmon,Vegatarian]
     }
