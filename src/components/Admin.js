@@ -12,27 +12,29 @@ function Admin(props){
     const [view, setView]=useState('')
     const [notes,setNotes]= useState([])
     const [verify, setVar]= useState('')
-    // const [filet, setFilet]= useState(0)
-    // const [salmon, setSalmon]= useState(0)
+    const [filet, setFilet]= useState(0)
+    const [salmon, setSalmon]= useState(0)
+    const [veg, setVeg]= useState(0)
     const [plusCount, setPlusCount]= useState(0)
-      useEffect(()=>{
+    useEffect(()=>{
         axios.get('https://jgweddingapi.herokuapp.com/api')
         .then(async data=>{
             console.log(data)
-              setAllG(data.data)
-              setDisplay(data.data)
+            setAllG(data.data)
+            setDisplay(data.data)
             //   getComments()
-              let attending=await data.data.filter(person=>{return person.status===true})
-              let p1s= await attending.filter(person=>{return person.p1status==='Bringing +1'})
-              console.log (p1s)
-              setPlusCount(p1s.length)
-              let not=await data.data.filter(person=>{return person.status===false})
-              setComing(attending)
-            //   let food = await tallyFood()
-            //   setFilet(food[0])
-            //   setSalmon(food[1])
-            //   console.log('food',food)
-              setDec(not)
+            let attending=await data.data.filter(person=>{return person.status===true})
+            let p1s= await attending.filter(person=>{return person.p1status==='Bringing +1'})
+            console.log (p1s)
+            setPlusCount(p1s.length)
+            let not=await data.data.filter(person=>{return person.status===false})
+            setComing(attending)
+            let food = await tallyFood()
+            setFilet(food[0])
+            setSalmon(food[1])
+            setVeg(food[2])
+            console.log('food',food)
+            setDec(not)
             }) 
         .catch(err=>console.log(err))
             axios.get('https://jgweddingapi.herokuapp.com/api/messages').then(data=>{setNotes(data.data)})
@@ -44,22 +46,22 @@ function Admin(props){
     //     setComments(allComments)
     // }
 
-    // const tallyFood=()=>{
-    //     let Filet=0
-    //     let Salmon =0
-    //     let Vegatarian=0
-    //     coming.map(guest=>{
-    //         console.log('coming list')
-    //         console.log(guest.order)
-    //         if(guest.order && guest.pOrder){
-    //          return (  guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1, 
-    //             guest.pOrder==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 )
-    //         }else if(guest.order && !guest.pOrder){
-    //             return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:Salmon+=1 
-    //         }
-    //     })
-    //     return[Filet,Salmon]
-    // }
+    const tallyFood=()=>{
+        let Filet=0
+        let Salmon =0
+        let Vegatarian=0
+        coming.map(guest=>{
+            console.log('coming list')
+            console.log(guest.order)
+            if(guest.order && guest.pOrder){
+                return (  guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:guest.order==='Vegatarian Option'?Vegatarian+=1:Salmon+=1, 
+                guest.pOrder==='Filet Mignon with a Demi-Glace'?Filet +=1:guest.pOrder==='Vegatarian Option'?Vegatarian+=1:Salmon+=1 )
+            }else if(guest.order && !guest.pOrder){
+                return guest.order==='Filet Mignon with a Demi-Glace'?Filet +=1:guest.order==='Vegatarian Option'?Vegatarian+=1:Salmon+=1
+            }
+        })
+        return[Filet,Salmon,Vegatarian]
+    }
     const toggleDisplay=(key)=>{
         console.log(key)
         // let option=e.tatget.value
@@ -201,25 +203,29 @@ function Admin(props){
                     view==='GInfo'?
                     <div className='container justify-content-center'>
                         <Row>
-                            <label for='totalA' value="Attending Guest">Total Guest List</label>
+                            <label  value="Attending Guest">Total Guest List</label>
                             <h5 id='totalA'> {allG?allG.length:'err'}</h5>
                         </Row>
                         <Row>
-                            <label for='totalA' value="Attending Guest">Total Attending Guest</label>
+                            <label value="Attending Guest">Total Attending Guest</label>
                             <h5 id='totalA'> {coming?coming.length+plusCount:null}</h5>
                         </Row>
                         <Row>
-                            <label for='totalA' value="Cannot Attend">Total Cannot Attend</label>
+                            <label  value="Cannot Attend">Total Cannot Attend</label>
                             <h5 id='totalA'> {decline?decline.length:null}</h5>
                         </Row>
-                        {/* <Row>
-                            <label for='totalA' value="Attending Guest">Total Filet Orders</label>
+                        <Row>
+                            <label value="Attending Guest">Total Filet Orders</label>
                             <h5 id='totalA'> {filet}</h5>
                         </Row>
                         <Row>
-                            <label for='totalA' value="Attending Guest">Total Filet Orders</label>
+                            <label value="Attending Guest">Total Salmon Orders</label>
                             <h5 id='totalA'> {salmon}</h5>
-                        </Row> */}
+                        </Row>
+                        <Row>
+                            <label value="Attending Guest">Total Vegatarian Orders</label>
+                            <h5 id='totalA'> {veg}</h5>
+                        </Row>
                     </div>:
                     (view==='ViewNotes')&&(notes.length>0? 
                     notes.map((data)=>{console.log(data)
