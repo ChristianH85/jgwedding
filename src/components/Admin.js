@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-import {Row,Col,Select,Button,Modal} from 'react-materialize'
+import {Row,Col,Select,Button,Modal,Icon} from 'react-materialize'
 import AddG from './AddG'
 // import TextInput from 'react-materialize/lib/TextInput'
 function Admin(props){
@@ -163,12 +163,19 @@ function Admin(props){
                             data.status===true?
                         <Row key={i} >
                             <div className='person'>
-                            <Col s={6}><p>{data.fullname}</p></Col>
+                            <Col s={7}><p>{data.fullname}</p></Col>
                             {data.p1status?
                             <Col s={1}><p>{data.p1status==="Bringing +1"?"+1":1}</p></Col>:<Col s={1}><p>1</p></Col>
                             }
-                            {/* <Col s={1}><p>{data.fullname}</p></Col> */}
-                            <Col s={2}><p className='attending'>Attending</p></Col>
+                            <Col s={1}>
+                                <Modal id="Modal-2" open={false} trigger={<Button className='info'node="button"><Icon>info</Icon></Button>}>
+                                <h5>{data.fullname}</h5><p>{data.order}</p><br/>
+                                {data.p1status&&(data.p1status==="Bringing +1")?<div><h5>Guest Order:</h5> {data.pOrder} </div>:null}<br/>
+                                <h5>Comments:</h5>
+                                <p className='comments'>{data.comments?data.comments:null}</p>
+                                </Modal>
+                            </Col>
+                            <Col s={1}><p className='attending'>A</p></Col>
                             <Col s={2}><Modal
                                 actions={[
                                     <Button flat modal="close" node="button" waves="green">Cancel</Button>,
@@ -184,8 +191,8 @@ function Admin(props){
                         </Row>:
                         <Row key={i} >
                         <div className='person'>
-                        <Col s={6}><p>{data.fullname}</p></Col>
-                        <Col s={4}><p className={data.status===false?'decline':'pending'}>{data.status===false?'Decline':'Pending'}</p></Col>
+                        <Col s={9}><p>{data.fullname}</p></Col>
+                        <Col s={1}><p className={data.status===false?'decline':'pending'}>{data.status===false?'D':'P'}</p></Col>
                         <Col s={2}><Modal
                             actions={[
                                 <Button flat modal="close" node="button" waves="green">Cancel</Button>,
