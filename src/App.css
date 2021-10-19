@@ -531,6 +531,7 @@ label{
   margin-bottom:.5em;
   width:100vw;
   position:fixed;
+  top:3;
   background: #7289aa98;
   /* align-items: center; */
   text-align: center;
@@ -543,6 +544,18 @@ label{
   font-weight: 800;
   color: #fff;
   border-radius: 8px;
+}
+.covid{
+  width: 100%;
+  background-color: #fff;
+  color: red;
+  height:2vh;
+  position: fixed;
+  top:0;
+  font-size: .65em;
+  text-align: center;
+  z-index:100;
+  margin-top:0;
 }
 .adminPh{
   /* height:3vh;

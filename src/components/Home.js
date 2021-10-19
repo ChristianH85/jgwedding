@@ -33,24 +33,6 @@ function Home(props){
       </Col>
       <Col s={12} id ='tcard' className='hide-on-med-and-up'>
         <CardPanel className='mBg'>
-        {/* <img src={blroseb} id="bg3" alt=""></img>
-        <img src={blroseb} id="bg4" alt=""></img> */}
-        {/* <div id='mTitle'>
-            <p className='title3'>
-              Justin Henry
-              & 
-              Genevra Henry
-            </p>
-            <hr/>
-            
-            <p className='title2'>
-              November 13, 2021
-            </p>
-            <p className='title2'>
-              4:00 pm
-            </p>
-            
-        </div> */}
             
           </CardPanel>
       </Col>    
@@ -68,7 +50,6 @@ function Home(props){
             <p className='title2'>
               4:00 pm
             </p>
-            
         </div>
     </Row>
     )

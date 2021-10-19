@@ -5,7 +5,9 @@ function Nav (){
 
     return(
         <div>
+            <p className='covid'>The Bride and Groom request that all guest are vaccinated before attending</p>
             <div id='mdNav'className='hide-on-small'>
+                
                 <Row className='align-content-center hide-on-small-only'>
                     <p className='title1'>Justin & Genna</p>
                 </Row>
